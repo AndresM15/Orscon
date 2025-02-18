@@ -1,0 +1,52 @@
+
+.carrusel {
+    width: 100%;
+    max-width: 900px; 
+    height: 400px; 
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    top: 50px;
+}
+
+.imagenes {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.imagen.activa {
+    display: block;
+}
+
+.flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.izquierda {
+    left: 10px;
+}
+
+.derecha {
+    right: 10px;
+}
