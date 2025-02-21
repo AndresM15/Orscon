@@ -1,8 +1,8 @@
 
 .carrusel {
     width: 100%;
-    max-width: 900px; 
-    height: 400px; 
+    max-width: 1500px; 
+    height: 1000px; 
     overflow: hidden;
     position: relative;
     margin: 0 auto;
@@ -54,13 +54,13 @@
 
 .containerr {
     display: inline-flex;
-    max-width: 1300px;
+    max-width: 1900px;
     background-color: #ffffff;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 3 3;
-    margin-top: 50px; /* Espacio entre el carrusel y el container */
+    margin-top: 50px; 
     padding: 0%;
 }
 

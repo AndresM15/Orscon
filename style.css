@@ -15,12 +15,12 @@ body {
 .header {
     width: 100%;
     background: black;
-    color: #ffb238;
+    color: #d4c7bf;
     font-size: 15px;
     text-align: center;
     margin: 0;
     padding: 0;
-    border: 0;
+    border: 0;  
     position: relative;
     z-index: 1000;
 }
@@ -33,7 +33,7 @@ body {
 
 .back{
     padding: 32px 0;
-    background: rgb(117, 33, 33);
+    background: #3b234a;
 }
 
 .menu {
@@ -49,7 +49,7 @@ body {
 
 .logo {
     font-size: 30px;
-    color: black;
+    color: #d4c7bf;
     font-weight: 800;
     text-transform: uppercase;
 }

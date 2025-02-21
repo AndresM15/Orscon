@@ -1,4 +1,4 @@
-// Elementos del DOM
+
 const btnCart = document.querySelector('.container-icon');
 const containerCartProducts = document.querySelector('.container-cart-products');
 const productsList = document.querySelector('.container-items');
@@ -6,25 +6,25 @@ const cartTotal = document.querySelector('.total-pagar');
 const countProducts = document.querySelector('#contador-productos');
 const cartContainer = document.querySelector('.container-cart-products');
 
-let allProducts = []; // Lista de productos en el carrito
+let allProducts = []; 
 
-// Mostrar/ocultar carrito
+
 btnCart.addEventListener('click', () => {
 	containerCartProducts.classList.toggle('hidden-cart');
 });
 
-// Evento para añadir productos al carrito
+
 productsList.addEventListener('click', e => {
 	if (e.target.tagName === 'BUTTON') {
-		const productElement = e.target.closest('.item'); // Obtener el contenedor del producto
+		const productElement = e.target.closest('.item'); 
 		const productName = productElement.querySelector('h2').textContent;
 		const productPrice = parseInt(productElement.querySelector('.price').textContent.replace('$', '').replace('.', ''));
 		
-		// Buscar si el producto ya está en el carrito
+		
 		const existingProduct = allProducts.find(p => p.name === productName);
 		
 		if (existingProduct) {
-			existingProduct.quantity++; // Aumentar la cantidad si ya existe
+			existingProduct.quantity++; 
 		} else {
 			allProducts.push({
 				name: productName,

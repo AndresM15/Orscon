@@ -8,8 +8,8 @@
 }
 
 body{
-    background: rgb(136,19,168);
-    background: radial-gradient(circle, rgba(136,19,168,1) 0%, rgba(60,12,71,1) 100%);
+    background: rgb(0,0,0);
+    background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(82,57,97,1) 100%);
     background-size: cover;   
 }
 
@@ -35,13 +35,13 @@ main{
     justify-content: center;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    background-color: rgba(0, 128, 255, 0.5);
+    background-color: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(82,57,97,1) 100%);;
 
 }
 
 .caja__trasera div{
     margin: 100px 40px;
-    color: white;
+    color: #d4c7bf;
     transition: all 500ms;
 }
 
@@ -57,7 +57,7 @@ main{
 
 .caja__trasera button{
     padding: 10px 40px;
-    border: 2px solid white;
+    border: 2px solid #d4c7bf;
     background: transparent;
     font-size: 14px;
     font-weight: 600;
@@ -68,7 +68,7 @@ main{
 }
 
 .caja__trasera button:hover{
-    background: white;
+    background: #d4c7bf;
     color: black;
 }
 
@@ -97,7 +97,7 @@ main{
     font-size: 50px;
     text-align: center;
     margin-bottom: 20px;
-    color: aqua;
+    color: black;
 }
 
 .contenedor__login-register form input{
@@ -111,15 +111,17 @@ main{
 }
 
 .contenedor__login-register form button{
+    
     padding: 10px 40px;
     margin-top: 40px;
     border: none;
     font-size: 14px;
-    background: blueviolet;
+    background: #523961;
     font-weight: 600;
     color: white;
     cursor: pointer;
     outline: none;
+    text-align: center;
 }
 
 .formulario__login{
@@ -168,4 +170,28 @@ main{
     cursor: pointer;
     outline: none;
     transition: all  300ms;
+}
+
+.btn__iniciar-sesion{
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    font-size: 16px;
+
+}
+
+.btn__iniciar-sesion::after {
+    position: absolute;
+    background: red;
+    color: white;
+    padding: 5px;
+    font-size: 14px;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    border-radius: 5px;
 }

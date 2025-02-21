@@ -76,3 +76,22 @@ anchoPage();
             caja_trasera_login.style.opacity = "1";
         }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Seleccionar botones
+    const btnLogin = document.querySelector(".formulario__login button");
+    const btnRegister = document.querySelector(".formulario__register button");
+
+    // Evento para el botón de "Entrar"
+    btnLogin.addEventListener("click", function (event) {
+        event.preventDefault(); // Evita que el formulario se envíe
+        alert("¡Has iniciado sesión correctamente!");
+    });
+
+    // Evento para el botón de "Regístrarse"
+    btnRegister.addEventListener("click", function (event) {
+        event.preventDefault();
+        alert("¡Te has registrado con éxito!");
+    });
+});
+
