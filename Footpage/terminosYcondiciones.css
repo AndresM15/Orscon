@@ -1,0 +1,25 @@
+
+
+.text {
+    width: 50%; /* O el ancho que prefieras */
+    margin: 0 auto; /* Esto centra el div horizontalmente */
+    line-height: 1.8; /* Ajusta el número para más o menos espacio */
+    font-family: "Lucida Console", Monaco, monospace;
+  }
+  
+
+
+.text h1, h2 {
+    color: #333;
+}
+
+.text h1{
+    text-align: center;
+}
+
+.text p {
+    color: #555;
+    line-height: 1.6;
+    text-align: justify;
+}
+

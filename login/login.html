@@ -8,6 +8,7 @@
 </head>
 <body>
     <main>
+        <header class="header"> <h1>Orscon</h1></header>
 
         <div class="contenedor__todo">
             <div class="caja__trasera">
@@ -26,30 +27,25 @@
             <!--Formulario de Login y registro-->
             <div class="contenedor__login-register">
                 <!--Login-->
-                <form action="" class="formulario__login">
+                <form action="" class="formulario__login" id="loginForm">
                     <h2>Iniciar Sesión</h2>
-                    <input type="text" placeholder="Correo Electronico">
-                    <input type="password" placeholder="Contraseña">
-                    <button class="btn__iniciar-sesion">Entrar</button>
+                    <input type="text" placeholder="Correo Electronico" id="correo">
+                    <input type="password" placeholder="Contraseña" id="contraseña" maxlength="10" placeholder="Máx. 10 caracteres">
+                    <button class="btn__iniciar-sesion" type="submit">Entrar</button>
                 </form>
 
                 <!--Register-->
-                <form action="" class="formulario__register">
+                <form action="" class="formulario__register" id="registerForm">
                     <h2>Regístrarse</h2>
-                    <input type="text" placeholder="Nombre completo">
-                    <input type="text" placeholder="Correo Electronico">
-                    <input type="text" placeholder="Usuario">
-                    <input type="password" placeholder="Contraseña">
-                    <button>Regístrarse</button>
+                    <input type="text" placeholder="Nombre completo" id="nombreR" >
+                    <input type="text" placeholder="Correo Electronico" id="correoR" >
+                    <input type="text" placeholder="Usuario" id="usuarioR" >
+                    <input type="password" placeholder="Contraseña" id="contraseñaR" maxlength="10" placeholder="Máx. 10 caracteres" >
+                    <button type="submit">Regístrarse</button>
                 </form>
             </div>
         </div>
-        <div class="boton__regresar">
-            <a href="../index/index.html">
-                <button>Regresar</button>
-            </a>
-        </div>
     </main>
-    <script src="../script.js"></script>
+    <script src="./login.js"></script>
 </body>
 </html>
