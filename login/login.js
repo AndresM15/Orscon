@@ -1,3 +1,5 @@
+const url = 'http://localhost:3000/api/v1';
+
 //Ejecutando funciones
 document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion);
 document.getElementById("btn__registrarse").addEventListener("click", register);
@@ -63,56 +65,89 @@ anchoPage();
         }
 }
 
+const onSaveInfo = async (e) => {
+    e.preventDefault()
+    const fullname = document.getElementById("nombreR").value.trim();
+    const user = document.getElementById("usuarioR").value.trim();
+    const email = document.getElementById("correoR").value.trim();
+    const password = document.getElementById("contraseñaR").value.trim();
 
+    if (!fullname || !user || !email || !password) {
+        alert("Todos los campos son obligatorios");
+        return;
+    }
 
-document.addEventListener("DOMContentLoaded", function () { 
-    document.getElementById("loginForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Evita el envío del formulario
+    const body = {
+        fullname,
+        user,
+        email,
+        password
+    };
+    try {
+        const response = await fetch(`${url}/user/create`, { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
 
-        let username = document.getElementById("correo").value;
-        let password = document.getElementById("contraseña").value;
+        const data = await response.json();
 
-        if (username.trim() !== "" && password.trim() !== "") {
-            alert("¡Inicio de sesión exitoso!");
+        console.log("Respuesta de la API:", data);
 
-            // Redirigir después de que el usuario cierre la alerta
-            setTimeout(function() {
-                window.location.href = "../index/index.html"; // Cambia esto por la ruta correcta
-            }, 1000);
+        if (response.ok) {
+            alert("¡Registro exitoso!");
         } else {
-            alert("Por favor, completa todos los campos.");
+            alert("Error en el registro: " + (data.message || "Respuesta inesperada"));
         }
-    });
+    } catch (error) {
+        console.error("Error en la solicitud:", error);
+        alert("Hubo un problema al registrar el usuario.");
+    }
+};
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('loginForm').addEventListener('submit', onlogin);
+    document.getElementById('registerForm').addEventListener('submit', onSaveInfo);
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("registerForm").addEventListener("submite", function(event) {
-        event.preventDefault(); // Evita el envío predeterminado del formulario
+const onlogin = async (e) => {
+    e.preventDefault();
 
-        let nombre = document.getElementById("nombreR").value.trim();
-        let correo = document.getElementById("correoR").value.trim();
-        let usuario = document.getElementById("usuarioR").value.trim();
-        let contraseña = document.getElementById("contraseñaR").value.trim();
+    const email = document.getElementById('correo').value.trim();
+    const password = document.getElementById('contraseña').value.trim();
 
-        // Verificar que todos los campos estén llenos
-        if (!nombre || !correo || !usuario || !contraseña) {
-            alert("Por favor, completa todos los campos.");
-            return;
+    if (!email || !password) {
+        alert("Por favor, completa todos los campos.");
+        return;
+    }
+
+    const body = { email, password };
+
+    try {
+        const response = await fetch(`${url}/user/create`, { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Inicio de sesión exitoso");
+            localStorage.setItem("token", data.token); // Guardamos el token de sesión
+            // Redirigir al dashboard o página principal
+            window.location.href = "dashboard.html"; 
+        } else {
+            alert(data.message || "Error al iniciar sesión");
         }
 
-        // Validar que el correo tenga un formato correcto
-        let correoValido = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        if (!correoValido.test(correo)) {
-            alert("Por favor, ingresa un correo válido.");
-            return;
-        }
-
-        alert("¡Registro exitoso!");
-
-        // Redirigir después de la alerta
-        setTimeout(function() {
-            window.location.href = "../index/index.html"; // Cambia esto por la página a la que quieres redirigir
-        }, 1000);
-    });
-});
-
+    } catch (error) {
+        console.error("Error en la solicitud:", error);
+        alert("Hubo un problema al iniciar sesión.");
+    }
+};
