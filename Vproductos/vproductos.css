@@ -1,0 +1,38 @@
+img{
+    margin-left: 48.5%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);;
+    
+}
+
+.product-title{
+    position: relative  ;
+    top:-310px;
+    left:3%;
+    font-size: 30px;
+    color: #c8ff00;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+.description-product{
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    position: relative;
+    max-width: 40%;
+    left: 3%;
+    top:-280px;  
+    
+    color: #000000;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+.price{
+    position : relative;
+    font-size: 30px;
+    top:-150px;
+    color: #c8ff00;
+    left: 2.5%;
+
+
+
+
+
+    font-family: "Lucida Console", Monaco, monospace;
+}
