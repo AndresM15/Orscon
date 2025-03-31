@@ -14,44 +14,49 @@ if (btnCart) {
     });
 }
 
-// Evento para gestionar productos (añadir al carrito o abrir vista previa)
+// Evento para gestionar clics en productos
 if (productsList) {
     productsList.addEventListener('click', e => {
         const productElement = e.target.closest('.item');
 
         if (!productElement) return;
 
-        // Si se hace clic en una imagen -> abrir vista previa
+        // Si se hace clic en una imagen -> redirigir a la página del producto
         if (e.target.tagName === 'IMG') {
             const target = productElement.getAttribute('data-target');
-            openPreview(target);
+            redirectToProductPage(target);
             return;
         }
 
-        // Si se hace clic en el botón "Añadir al carrito" -> agregar producto
+        // Si se hace clic en el botón "Añadir al carrito" -> agregar producto
         if (e.target.tagName === 'BUTTON') {
             addToCart(productElement);
         }
     });
 }
 
-// Función para abrir la vista previa del producto
-function openPreview(target) {
-    const previewContainer = document.querySelector(".productos-preview");
-    const previewBoxes = document.querySelectorAll('.productos-preview .preview');
-
-    previewContainer.style.display = 'flex'; // Mostrar el contenedor principal
-
-    previewBoxes.forEach(preview => {
-        if (preview.getAttribute('data-target') === target) {
-            preview.style.display = 'block'; // Mostrar la previsualización correcta
-        } else {
-            preview.style.display = 'none'; // Ocultar las demás
-        }
-    });
+// Función para redirigir a la página del producto
+function redirectToProductPage(target) {
+    // Redirigir a una página específica según el producto
+    if (target === 'p-1') {
+        window.location.href = '../Vproductos/vteclado.html'; // Página del teclado
+    } else if (target === 'p-2') {
+        window.location.href = '../Vproductos/vaudifonos.html'; // Otra página de producto
+    } else if(target === 'p-3') {
+        window.location.href = '../Vproductos/vcargador_negro.html'; // Otra página de producto    
+    }
+    else if(target === 'p-4') {
+        window.location.href = '../Vproductos/vreloj.html';
+    }
+    else if(target === 'p-5') {
+        window.location.href = '../Vproductos/vmouse.html';
+    }
+    else{
+        console.error('No se encontró una página para el producto:', target);
+    }
 }
 
-// Función para añadir productos al carrito
+// Función para añadir productos al carrito
 function addToCart(productElement) {
     const productName = productElement.querySelector('h2').textContent;
     const productPrice = parseFloat(productElement.querySelector('.price').textContent.replace(/[$,]/g, ''));
@@ -71,16 +76,16 @@ function addToCart(productElement) {
     updateCart();
 }
 
-// Función para actualizar el carrito
+// Función para actualizar el carrito
 function updateCart() {
-    cartContainer.innerHTML = ''; 
+    cartContainer.innerHTML = '';
 
     let total = 0;
     let totalQuantity = 0;
 
     if (allProducts.length === 0) {
-        cartContainer.innerHTML = '<p class="empty-cart">El carrito está vacío</p>';
-        cartTotal.textContent = $0;
+        cartContainer.innerHTML = '<p class="empty-cart">El carrito está vacío</p>';
+        cartTotal.textContent = '$0';
         countProducts.textContent = 0;
         return;
     }
@@ -114,7 +119,7 @@ function updateCart() {
     countProducts.textContent = totalQuantity;
 }
 
-// Función para remover productos del carrito
+// Función para remover productos del carrito
 function removeProduct(name) {
     const productIndex = allProducts.findIndex(product => product.name === name);
     if (productIndex !== -1) {
@@ -126,19 +131,3 @@ function removeProduct(name) {
     }
     updateCart();
 }
-
-// Evento para cerrar la vista previa
-document.addEventListener("DOMContentLoaded", () => {
-    const previewContainer = document.querySelector(".productos-preview");
-    const previewBoxes = document.querySelectorAll('.productos-preview .preview');
-
-    previewBoxes.forEach(preview => {
-        const closeButton = preview.querySelector('.fa-times');
-        if (closeButton) {
-            closeButton.addEventListener('click', () => {
-                preview.style.display = 'none';
-                previewContainer.style.display = 'none';
-            });
-        }
-    });
-});

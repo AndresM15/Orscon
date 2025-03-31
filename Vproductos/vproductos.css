@@ -1,10 +1,17 @@
-.teclado-img{
-    position: relative;
-    top:45px;
-    right:-680px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);;
+.producto-img{
     
-    
+    position: relative; /* Permite mover la imagen desde su posición original */
+    top: 50px; /* Mueve la imagen hacia abajo */
+    left: 730px; /* Mueve la imagen hacia la derecha */
+    width: 700px;
+    height: 400px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.producto-img:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
+    box-shadow: 0 9px 16px rgba(0, 0, 0, 0.4); /* Aumenta la sombra al pasar el mouse */
 }
 
 .product-title{
