@@ -1,6 +1,9 @@
-img{
-    margin-left: 48.5%;
+.teclado-img{
+    position: relative;
+    top:45px;
+    right:-680px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);;
+    
     
 }
 
@@ -17,7 +20,8 @@ img{
     position: relative;
     max-width: 40%;
     left: 3%;
-    top:-280px;  
+    top:-300px;
+    font-size: 17px;  
     
     color: #000000;
     font-family: "Lucida Console", Monaco, monospace;
@@ -29,10 +33,37 @@ img{
     top:-150px;
     color: #c8ff00;
     left: 2.5%;
-
-
-
-
-
     font-family: "Lucida Console", Monaco, monospace;
+}
+
+.carrito{
+    position: relative;
+    padding: 15px 30px;
+    color: #c8ff00;
+    font-family: "Lucida Console", Monaco, monospace;
+    background-color: rgba(0, 0, 0, 0.842);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.carrito:hover {
+    background-color: #090909; /* Cambia el color al pasar el mouse */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
+}
+
+.comprar{
+    position: relative;
+    padding: 15px 70px;
+    color: #c8ff00;
+    font-family: "Lucida Console", Monaco, monospace;
+    background-color: rgba(0, 0, 0, 0.842);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.comprar:hover {
+    background-color: #090909; /* Cambia el color al pasar el mouse */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
 }
