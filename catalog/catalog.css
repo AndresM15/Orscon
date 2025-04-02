@@ -321,3 +321,39 @@ img{
     background: #000000;
     width: 100vw;
 }
+
+
+.search-bar {
+    position: absolute;
+    top: 160px; /* Ajusta la posición vertical */
+    right: 20px; /* Ajusta la posición horizontal */
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-bar input {
+    width: 200px; /* Ancho del cuadro de búsqueda */
+    padding: 8px 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde del cuadro */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 14px; /* Tamaño del texto */
+}
+
+.search-bar button {
+    background-color: #c8ff00; /* Color de fondo del botón */
+    color: #000; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    padding: 8px 12px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    font-size: 14px; /* Tamaño del texto */
+}
+
+.search-bar button i {
+    font-size: 16px; /* Tamaño del ícono */
+}
+
+.search-bar button:hover {
+    background-color: #a6cc00; /* Color del botón al pasar el mouse */
+}

@@ -131,3 +131,19 @@ function removeProduct(name) {
     }
     updateCart();
 }
+
+const searchInput = document.querySelector('.search-bar input');
+const items = document.querySelectorAll('.item');
+
+searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+
+    items.forEach(item => {
+        const productName = item.querySelector('h2').textContent.toLowerCase();
+        if (productName.includes(searchTerm)) {
+            item.style.display = 'block'; // Muestra el producto si coincide
+        } else {
+            item.style.display = 'none'; // Oculta el producto si no coincide
+        }
+    });
+});

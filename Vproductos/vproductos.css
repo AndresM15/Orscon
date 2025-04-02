@@ -1,8 +1,7 @@
 .producto-img{
-    
     position: relative; /* Permite mover la imagen desde su posición original */
     top: 50px; /* Mueve la imagen hacia abajo */
-    left: 730px; /* Mueve la imagen hacia la derecha */
+    left: 70px; /* Mueve la imagen hacia la derecha */
     width: 700px;
     height: 400px;
     object-fit: cover;
@@ -17,7 +16,7 @@
 .product-title{
     position: relative  ;
     top:-310px;
-    left:3%;
+    left: 850px;
     font-size: 30px;
     color: #c8ff00;
     font-family: "Lucida Console", Monaco, monospace;
@@ -26,7 +25,7 @@
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     position: relative;
     max-width: 40%;
-    left: 3%;
+    left: 850px;
     top:-300px;
     font-size: 17px;  
     
@@ -37,9 +36,9 @@
 .price{
     position : relative;
     font-size: 30px;
-    top:-150px;
-    color: #c8ff00;
-    left: 2.5%;
+    top:50px;
+    color: #288908;
+    left: 70px;
     font-family: "Lucida Console", Monaco, monospace;
 }
 
@@ -52,6 +51,8 @@
     border-radius: 10px;
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.2s ease;
+    right: -470px;
+    top:-60px;
 }
 
 .carrito:hover {
@@ -68,9 +69,12 @@
     border-radius: 10px;
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.2s ease;
+    right:-50px;
+    top:-60px;
 }
 
 .comprar:hover {
     background-color: #090909; /* Cambia el color al pasar el mouse */
     transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
 }
+
