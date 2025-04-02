@@ -127,7 +127,7 @@ const onlogin = async (e) => {
     const body = { email, password };
 
     try {
-        const response = await fetch(`${url}/user/create`, { 
+        const response = await fetch(`${url}/user/`, { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -141,7 +141,7 @@ const onlogin = async (e) => {
             alert("Inicio de sesión exitoso");
             localStorage.setItem("token", data.token); // Guardamos el token de sesión
             // Redirigir al dashboard o página principal
-            window.location.href = "dashboard.html"; 
+            window.location.href = "../index/index.html"; 
         } else {
             alert(data.message || "Error al iniciar sesión");
         }
