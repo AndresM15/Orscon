@@ -6,22 +6,30 @@
     padding: 0;
     box-sizing: border-box;
 }
+.titulo_pagina{
+    text-align:center;  
+    position: relative;
+    top: 50px;
+    color: #000;
+    
+}
 
 body{
     margin:auto;
-    max-width:max-content;
+    max-width:fit-content;
     font-family: "Lucida Console", Monaco, monospace;
     color: #333;
+    
 }
 
 .icon-cart{
     width: 40px;
     height: 40px;
-    stroke: #fcf94c;
-    position: absolute;
-    right: 2px;
-    position: fixed;
-    top: 60px;
+    color: #c8ff00;
+    right: -950px;
+    position: relative;
+    top: -150px;
+
 }
 
 .icon-cart:hover{
@@ -38,16 +46,17 @@ img{
 .container-icon{
     position:auto;
     top: auto;
+    margin-top: 20px;
     
 }
 
 .count-products{
-    position: fixed;
-    top: 80px;
-    right: 0;
+    position: relative;
+    top: -170px;
+    right: -970px;
 
-    background-color: #000;
-    color: #fff;
+    background-color: #c8ff00;;
+    color: #100f0f;
     width: 25px;
     height: 25px;
 
