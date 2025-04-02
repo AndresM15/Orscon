@@ -1,3 +1,5 @@
+const url = 'http://localhost:3000/api/v1';
+
 //Ejecutando funciones
 document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion);
 document.getElementById("btn__registrarse").addEventListener("click", register);
@@ -63,9 +65,8 @@ anchoPage();
         }
 }
 
-const url = 'http://localhost:3000/api/v1/users';
-
-const onSaveInfo = async () => {
+const onSaveInfo = async (e) => {
+    e.preventDefault()
     const fullname = document.getElementById("nombreR").value.trim();
     const user = document.getElementById("usuarioR").value.trim();
     const email = document.getElementById("correoR").value.trim();
@@ -82,9 +83,8 @@ const onSaveInfo = async () => {
         email,
         password
     };
-
     try {
-        const response = await fetch("http://localhost:3000/api/v1/users/create", { 
+        const response = await fetch(`${url}/user/create`, { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -108,15 +108,14 @@ const onSaveInfo = async () => {
 };
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById('loginForm').addEventListener('submit', onlogin);
-});
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("registerForm").addEventListener("submite", function(event) {
+        event.preventDefault(); // Evita el envío predeterminado del formulario
 
-const onlogin = async (e) => {
-    e.preventDefault();
-
-    const email = document.getElementById('correo').value.trim();
-    const password = document.getElementById('contraseña').value.trim();
+        let nombre = document.getElementById("nombreR").value.trim();
+        let correo = document.getElementById("correoR").value.trim();
+        let usuario = document.getElementById("usuarioR").value.trim();
+        let contraseña = document.getElementById("contraseñaR").value.trim();
 
     if (!email || !password) {
         alert("Por favor, completa todos los campos.");
@@ -126,7 +125,7 @@ const onlogin = async (e) => {
     const body = { email, password };
 
     try {
-        const response = await fetch("http://localhost:3000/api/v1/users", { 
+        const response = await fetch(`${url}/user/`, { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -140,7 +139,7 @@ const onlogin = async (e) => {
             alert("Inicio de sesión exitoso");
             localStorage.setItem("token", data.token); // Guardamos el token de sesión
             // Redirigir al dashboard o página principal
-            window.location.href = "dashboard.html"; 
+            window.location.href = "../index/index.html"; 
         } else {
             alert(data.message || "Error al iniciar sesión");
         }
