@@ -7,7 +7,7 @@
     <title>index</title>
     <link rel="stylesheet" href="../style.css">
 	<link rel="stylesheet" href="vproductos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   
 </head>
 <body>
     <section>
@@ -42,8 +42,12 @@
     </header>
 
 
+
     <main class="product-page">
-        <img src="../catalog/teclado.jpg" alt="Teclado Gamer" class="producto-img">
+        <!-- Imagen principal -->
+        <img src="../catalog/teclado_nuevo.jpg" alt="Teclado Gamer" class="producto-img main-image">
+    
+        <!-- Cuadro de texto -->
         <div class="text-box">
             <h1 class="product-title">Teclado Gamer Marca Logitech</h1>
             <p class="price">$150.000</p>
@@ -52,12 +56,25 @@
                 precisión y un diseño ergonómico para largas sesiones de juego. Ideal para jugadores profesionales y
                 entusiastas.
             </p>
-        </div>    
+            <p class="componentes">
+                Este teclado cuenta con inalambrico y con cable, es compatible con Windows y Mac,
+                teclas programables, 
+                ademas que cuenta con una aplicacion para su configuracion, cuenta con teclas de mebrana.
+            </p>
+        </div>
+            
+    
+        <!-- Botones -->
         <button class="carrito">Añadir al carrito</button>
         <button class="comprar">Comprar</button>
-    </main>
-    
 
+        <!-- Miniaturas -->
+        <div class="thumbnails">
+            <img src="../catalog/teclado_nuevo.jpg" alt="Teclado Gamer 1" class="thumbnail">
+            <img src="../catalog/teclado_nuevo2.png" alt="Teclado Gamer 2" class="thumbnail">
+            <img src="../catalog/teclado_nuevo3.jpg" alt="Teclado Gamer 3" class="thumbnail">
+        </div>
+    </main>
     <footer class="piePagina">
 		<div class="soporte">
 			<nav>
@@ -85,6 +102,9 @@
 		</div>
 	</footer>
 	<script src="vproductos.js"></script>
+    
+    
+    
 </body>
 
 </html>

@@ -1,4 +1,5 @@
 .producto-img{
+    display:flex;
     position: relative; /* Permite mover la imagen desde su posición original */
     top: 50px; /* Mueve la imagen hacia abajo */
     left: 70px; /* Mueve la imagen hacia la derecha */
@@ -14,9 +15,10 @@
 }
 
 .product-title{
-    position: relative  ;
+    position: relative;
+    display: flex;
     top:-310px;
-    left: 850px;
+    left: 835px;
     font-size: 30px;
     color: #c8ff00;
     font-family: "Lucida Console", Monaco, monospace;
@@ -25,56 +27,136 @@
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     position: relative;
     max-width: 40%;
-    left: 850px;
+    left: 835px;
     top:-300px;
     font-size: 17px;  
+    flex-wrap: wrap;
     
-    color: #000000;
+    color: #ffffff;
     font-family: "Lucida Console", Monaco, monospace;
 }
 
 .price{
     position : relative;
     font-size: 30px;
-    top:50px;
-    color: #288908;
-    left: 70px;
+    bottom: 120px;
+    left: 1040px;
+    color: #c8ff00;
+    
     font-family: "Lucida Console", Monaco, monospace;
+}
+
+.componentes{
+    position: relative;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 17px;
+    color: #fff;
+    max-width: 40%;
+    left: 835px;
+    text-align:left;
 }
 
 .carrito{
     position: relative;
     padding: 15px 30px;
-    color: #c8ff00;
+    color: #080808;
     font-family: "Lucida Console", Monaco, monospace;
-    background-color: rgba(0, 0, 0, 0.842);
+    background-color: #c8ff00;
     border-radius: 10px;
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.2s ease;
-    right: -470px;
-    top:-60px;
+    right: -1125px;
+    top: -175px;
+    font-size: 14px; /* Cambia el tamaño de la letra */
+    width: 200px; /* Fija el ancho del botón */
+    height: 50px; /* Fija la altura del botón */
+    transform: none;
+    white-space: nowrap;
+    
+    
 }
+
 
 .carrito:hover {
     background-color: #090909; /* Cambia el color al pasar el mouse */
     transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
+    color: #c8ff00;
 }
 
 .comprar{
     position: relative;
     padding: 15px 70px;
-    color: #c8ff00;
+    color: #0b0a0a;
     font-family: "Lucida Console", Monaco, monospace;
-    background-color: rgba(0, 0, 0, 0.842);
+    background-color: #c8ff00;
     border-radius: 10px;
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.2s ease;
-    right:-50px;
-    top:-60px;
+    right:-705px;
+    top:-175px;
+    font-size: 14px; /* Cambia el tamaño de la letra */
+    width: 200px; /* Fija el ancho del botón */
+    height: 50px; /* Fija la altura del botón */
+    text-align: center; /* Centra el texto dentro del botón */
+    line-height: normal;
+    
 }
 
 .comprar:hover {
     background-color: #090909; /* Cambia el color al pasar el mouse */
     transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
+    color: #c8ff00; 
 }
+
+
+
+
+.text-box::before {
+    content: ''; /* Crea el pseudo-elemento */
+    position: absolute;
+    top: 200px;
+    left: 810px;
+    width: 600px;
+    height: 650px;
+    background-color: #000; /* Fondo negro */
+    z-index: -1; /* Envía el fondo detrás del texto */
+    border-radius: 10px; /* Bordes redondeados (opcional) */
+    padding: 10px; /* Ajusta el tamaño del fondo */
+}
+
+.image-gallery {
+    text-align: center; /* Centra la galería */
+    
+}
+
+.main-image {
+    width: 100%;
+    max-width: 700px; /* Tamaño máximo de la imagen principal */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    margin-bottom: 20px;
+}
+
+.thumbnails {
+    display: flex;
+    justify-content: center; /* Centra las miniaturas horizontalmente */
+    gap: 10px; /* Espaciado entre miniaturas */ /* Espaciado superior para separar de la imagen principal */
+    position: absolute; /* Asegura que las miniaturas estén posicionadas correctamente */
+    top: 650px; /* Ajusta la posición vertical de las miniaturas */
+    left: 170px; 
+}
+.thumbnail {
+    width: 150px; /* Tamaño de las miniaturas */
+    height: auto;
+    cursor: pointer; /* Cambia el cursor al pasar sobre las miniaturas */
+    border: 2px solid transparent; /* Borde inicial */
+    border-radius: 5px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.thumbnail:hover {
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el mouse */
+    border-color: #c8ff00; /* Cambia el color del borde al pasar el mouse */
+}
+
 
