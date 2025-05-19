@@ -67,18 +67,18 @@ anchoPage();
 
 const onSaveInfo = async (e) => {
     e.preventDefault()
-    const name = document.getElementById("nombreR").value.trim();
+    const fullname = document.getElementById("nombreR").value.trim();
     const user = document.getElementById("usuarioR").value.trim();
     const email = document.getElementById("correoR").value.trim();
     const password = document.getElementById("contraseñaR").value.trim();
 
-    if (!name || !user || !email || !password) {
-        alert("Todos los campos son obligatorios");
+    if (!fullname || !email || !user  || !password) {
+        alert("Todos los campos son obligatorios"); 
         return;
     }
 
     const body = {
-        name,
+        fullname,
         user,
         email,
         password
@@ -151,3 +151,39 @@ const onlogin = async (e) => {
         alert("Hubo un problema al iniciar sesión.");
     }
 };
+
+document.getElementById('recuperarContrasenaLink').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('modalRecuperar').style.display = 'block';
+});
+
+document.getElementById('enviarRecuperacion').addEventListener('click', async function() {
+    const email = document.getElementById('emailRecuperar').value.trim();
+
+    if (!email) {
+        alert("Por favor ingresa tu correo electrónico.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`${url}/user/recover`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Se ha enviado un correo para recuperar tu contraseña.");
+            document.getElementById('modalRecuperar').style.display = 'none';
+        } else {
+            alert(data.message || "No se pudo enviar el correo.");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Hubo un error al intentar recuperar la contraseña.");
+    }
+});

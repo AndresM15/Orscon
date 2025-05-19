@@ -366,3 +366,12 @@ img{
 .search-bar button:hover {
     background-color: #a6cc00; /* Color del botón al pasar el mouse */
 }
+
+
+#userName img.user-image {
+    width: 50px;                /* Tamaño deseado */
+    height: 50px;
+    border-radius: 50%;          /* Hace la imagen circular */
+    object-fit: cover;           /* Evita que la imagen se deforme */
+    display: block;             /* Asegura que la imagen se muestre */
+}
