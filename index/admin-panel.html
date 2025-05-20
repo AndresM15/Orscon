@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel de Administración</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    .hidden { display: none; }
+    .btn-delete { color: red; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <h1>Panel de Administración</h1>
+  <p id="status"></p>
+
+  <table id="adminTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Usuario</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const API_URL = "http://localhost:3000/api/v1";
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    // Protección: redireccionar si no es administrador
+    if (!user || user.profile_id !== 1) {
+      alert("Acceso denegado. Solo administradores.");
+      window.location.href = "../login.html";
+    }
+
+    // Cargar lista de administradores
+    async function loadAdmins() {
+      try {
+        const res = await fetch(`${API_URL}/all`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+
+        const data = await res.json();
+        const tbody = document.querySelector("#adminTable tbody");
+        tbody.innerHTML = "";
+
+        data.users.forEach(admin => {
+          if (admin.profile_id === 1) { // Solo mostrar admins
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${admin.id_user}</td>
+              <td>${admin.fullname}</td>
+              <td>${admin.email}</td>
+              <td>${admin.user}</td>
+              <td>
+                <span class="btn-delete" onclick="deleteAdmin(${admin.id_user})">Eliminar</span>
+              </td>
+            `;
+            tbody.appendChild(row);
+          }
+        });
+
+      } catch (err) {
+        document.getElementById("status").innerText = "Error al cargar administradores.";
+        console.error(err);
+      }
+    }
+
+    // Eliminar administrador
+    async function deleteAdmin(id_user) {
+      if (!confirm("¿Seguro que deseas eliminar este administrador?")) return;
+
+      try {
+        const res = await fetch(`${API_URL}/delete/${id_user}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        const result = await res.json();
+        alert(result.message);
+        loadAdmins(); // Recargar tabla
+
+      } catch (err) {
+        alert("Error al eliminar administrador.");
+        console.error(err);
+      }
+    }
+
+    // Cargar al inicio
+    loadAdmins();
+  </script>
+
+</body>
+</html>

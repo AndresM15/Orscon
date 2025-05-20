@@ -65,3 +65,62 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.reload();
     });
 });
+
+window.addEventListener('DOMContentLoaded', () => {
+    // Mostrar el popup solo si el usuario no lo cerró antes
+    document.getElementById('promoModal').style.display = 'flex';
+
+  });
+
+  function cerrarPromo() {
+    document.getElementById('promoModal').style.display = 'none';
+    localStorage.setItem('promoDismissed', 'true');
+  }
+
+  function enviarPromo() {
+  const email = document.getElementById('promoEmail').value.trim();
+  if (!email) {
+    alert('Por favor ingresa un correo válido.');
+    return;
+  }
+
+  fetch('http://localhost:3000/api/v1/user/send-coupon', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ email })
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert(data.message);
+    cerrarPromo();
+  })
+  .catch(err => {
+    console.error('Error al enviar cupón:', err);
+    alert('Error al registrar el correo.');
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (user) {
+    // Oculta "Iniciar sesión" y muestra el menú de usuario
+    document.getElementById("loginOption").classList.add("hidden");
+    const userProfile = document.getElementById("userProfile");
+    userProfile.classList.remove("hidden");
+    userProfile.querySelector(".user-name").textContent = user.fullname;
+
+    // Si el usuario es administrador, muestra el botón del panel admin
+    if (user.profile_id === 1) {
+      document.getElementById("adminPanelOption").classList.remove("hidden");
+    }
+
+    // Logout
+    document.getElementById("logout").addEventListener("click", () => {
+      localStorage.clear();
+      window.location.href = "../index/index.html";
+    });
+  }
+});
