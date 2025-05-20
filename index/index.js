@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loginOption.classList.add("hidden");
         userProfile.classList.remove("hidden");
 
-        fetch(`http://localhost:3000/api/v1/user/profile`, {
+        fetch('http://localhost:3000/api/v1/user/profile', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`

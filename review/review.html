@@ -1,80 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>review</title>
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="review.css">
-    
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Reviews</title>
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="review.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
 </head>
+
 <body>
-    <section><header  class="header">
-        <nav>
-            <h1>Orscon</h1>
-        </nav>
-    </header></section>
-    
-    <header>
-        <div class="back">
-            <div class="menu container">
+	<section>
+		<header class="header">
+			<nav>
+				<h1>Orscon</h1>
+			</nav>
+		</header>
+	</section>
+	<header>
+		<div class="back">
+			<div class="menu container">
 
-                <a href="../index/index.html" class="logo">
-                    <img src="../logo.png" alt="Orscon">
-                </a> 
-                <input type="checkbox" id="menu"/>
-                <label for="menu" >
-                    <img src="../menu.png" class="menu-icono" alt="logo">
-                </label>
-                <nav class="navbar">
-                    <ul>
-                        <li><a href="../catalog/catalog.html">Catalogo</a></li>
-                        <li><a href="../review/review.html">Reviews</a></li>
-                        <li><a href="../login/login.html">Iniciar sesion</a></li>
-                        
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+				<a href="../index/index.html" class="logo">
+					<img src="../logo.png" alt="Orscon">
+				</a>
+				<input type="checkbox" id="menu" />
+				<label for="menu">
+					<img src="../menu.png" class="menu-icono" alt="logo">
+				</label>
+				<nav class="navbar">
+					<ul>
+						<li><a href="../catalog/catalog.html">Catalogo</a></li>
+						<li><a href="../review/review.html">Reviews</a></li>
+						<li><a href="../login/login.html">Iniciar sesion</a></li>
 
-    <div class="container">
-        <h1>Reviews</h1>
-        <p>Sección dedicada a presentar <span class="highlight">reviews de productos tecnológicos</span> o con el sello puesto en la tecnología. <br>
-        <span class="highlight">Reviews de productos tecnológicos</span> que se entregan en Zoom Tecnológico para orientar al público a y tener una compra más informada.</p>
-        <img src="image_review_1.png" alt="Imagen de audífonos">
-    </div>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<form class="search-bar" action="#" method="GET">
+            <input type="text" name="search" placeholder="Buscar productos..." />
+            <button type="submit">
+                <i class="fas fa-search"></i> 
+            </button>
+        </form>
+		
+	</header>
+	<h1 class="titulo_pagina ">Review</h1>
 
-    <button onclick="onGetData()">
-        Get all data
-    </button>
+	<div class="container-icon">
+		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+			class="icon-cart">
+			<path stroke-linecap="round" stroke-linejoin="round"
+				d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+		</svg>
+		<div class="count-products">
+			<span id="contador-productos">0</span>
+		</div>
 
-    <footer class="piePagina">
-        <div class="soporte">
-            <nav>
-                <ul>
-                    <li>24-HORAS SERVICIO AL CLIENTE</li>
-                    <li>TELÉFONOS: +573207196190</li>
-                    <li>Email: soporte@merkalu.com</li>
-                </ul>
-            </nav>
-        </div>
-        <div class="servicioCliente">
-            <ul>
-                <li><a href="#">Preguntas frecuentes</a></li>
-                <li><a href="#">Términos y condiciones</a></li>
-                <li><a href="#">Política de privacidad</a></li>
-            </ul>
-        </div>
-        <div class="siguenos">
-            <ul>
-                <li>Síguenos en:</li>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Instagram</a></li>
-            </ul>
-        </div>
-    </footer> 
-    <script src="./review.js"></script>
+		<div class="container-cart-products hidden-cart">
+			<div class="cart-product">
+				<div class="info-cart-product">
+					<span class="cantidad-producto-carrito">1</span>
+					<p class="titulo-producto-carrito">Monitor</p>
+					<span class="precio-producto-carrito">$800.000</span>
+				</div>
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+					stroke="currentColor" class="icon-close">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+				</svg>
+			</div>
+			<div class="cart-total">
+				<h3>Total:</h3>
+				<span class="total-pagar">$800.000</span>
+			</div>
+		</div>
+	</div>
+	</header>
+	<div class="container-items">
+		<div class="item" data-target="p-1">
+			<figure>
+				<img src="review_audifonos.jpg" alt="producto" />
+			</figure>
+			<div class="info-product">
+				<h2>Review Audifonos</h2>
+				<p class="nombre_p">Review de Pepe Hernandez</p>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                
+			</div>
+		</div>
+		<div class="item" data-target="p-2">
+			<figure>
+				<img src="celular_review.jpg" alt="producto" />
+					
+			</figure>
+			<div class="info-product">
+				<h2>Review Celular</h2>
+				<p class="nombre_p">Review de Carlos Perez</p>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+			</div>
+		</div>
+		<div class="item" data-target="p-3">
+			<figure>
+				<img src="review_tablet.jpg" alt="producto" />
+			</figure>
+			<div class="info-product">
+				<h2>Review Tablet</h2>
+				<p class="nombre_p">Review de Maria Vallejo</p>
+                <div class="rating">
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+			</div>
+		</div>
+		<div class="item" data-target="p-4">
+			<figure>
+				<img src="celular2_review.jpeg" alt="producto" />
+			</figure>
+			<div class="info-product">
+				<h2>Review Celular</h2>
+				<p class="nombre_p">Review de Jorge Perez</p>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+			</div>
+		</div>
+		<div class="item" data-target="p-5">
+			<figure>
+				<img src="audifonos_review.jpg" alt="producto" />
+			</figure>
+			<div class="info-product">
+				<h2>Review Audifonos</h2>
+				<p class="nombre_p">Review de Mario Gonzales</p>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+			</div>
+		</div>
+	</div>
+
+
+	<footer class="piePagina">
+		<div class="soporte">
+			<nav>
+				<ul>
+					<li>24-HORAS SERVICIO AL CLIENTE</li>
+					<li>TELÉFONOS: +57 3207196190</li>
+					<li>Email: soporte@merkalu.com</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="servicioCliente">
+			<ul>
+				<li><a href="#">Preguntas frecuentes</a></li>
+				<li><a href="#">Términos y condiciones</a></li>
+				<li><a href="#">Política de privacidad</a></li>
+			</ul>
+		</div>
+		<div class="siguenos">
+			<ul>
+				<li>Síguenos en:</li>
+				<li><a href="#">Facebook</a></li>
+				<li><a href="#">Twitter</a></li>
+				<li><a href="#">Instagram</a></li>
+			</ul>
+		</div>
+	</footer>
+	<script src="review.js"></script>
 </body>
+
 </html>

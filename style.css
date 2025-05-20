@@ -12,7 +12,7 @@ body {
     background: #ffffff;
     font-family: "Lucida Console", Monaco, monospace;
     margin:0;
-
+    
 }
 
 .headerO {
@@ -29,6 +29,7 @@ body {
     position: fixed;
     z-index: 1000;
     animation: mover 10s linear infinite alternate;
+    
 }
 
 @keyframes mover {
@@ -63,6 +64,7 @@ body {
     font-size: 10px;
     letter-spacing: 0.8px;
     word-spacing: -3.8px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.4);
 }
 
 .logo img{
@@ -144,6 +146,8 @@ body {
     min-height: 100vh;
 }
 
+
+
 .piePagina {
     background-color: #413d3d;
     color: #c8ff00;
@@ -158,6 +162,9 @@ body {
     font-size: 18px;
     letter-spacing: 0.8px;
     word-spacing: -3.8px;
+    width: 220vh;
+    height: 260px;
+    
 }
 
 .piePagina ul {

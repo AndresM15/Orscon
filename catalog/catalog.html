@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="../style.css">
 	<link rel="stylesheet" href="catalog.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="stylesheet" href="index.css">
 
 
 </head>
@@ -20,34 +21,45 @@
 			</nav>
 		</header>
 	</section>
+	<header id="header">
+        <div class="back">
+            <div class="menu container">
+
+                <a href="../index/index.html" class="logo">
+                    <img src="../logo.png" alt="Orscon">
+                </a> 
+                <nav class="navbar">
+                    <ul>
+                        <li><a href="../catalog/catalog.html">Catálogo</a></li>
+                        <li><a href="../review/review.html">Reviews</a></li>
+                        
+                        <!-- Opción de Iniciar Sesión (se oculta al iniciar sesión) -->
+                        <li id="loginOption"><a href="../login/login.html">Iniciar sesión</a></li>
+                    
+                        <!-- Menú desplegable del usuario (se muestra al iniciar sesión) -->
+                        <li id="userProfile" class="hidden">
+                            <a href="#" id="userName">
+                                <img src="../perfilimg.png" alt="Usuario" class="user-image">
+                                <span class="user-name"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"></a></li>
+                                <li><a href="#" id="logout">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
 	<header>
-		<div class="back">
-			<div class="menu container">
-
-				<a href="../index/index.html" class="logo">
-					<img src="../logo.png" alt="Orscon">
-				</a>
-				<input type="checkbox" id="menu" />
-				<label for="menu">
-					<img src="../menu.png" class="menu-icono" alt="logo">
-				</label>
-				<nav class="navbar">
-					<ul>
-						<li><a href="../catalog/catalog.html">Catalogo</a></li>
-						<li><a href="../review/review.html">Reviews</a></li>
-						<li><a href="../login/login.html">Iniciar sesion</a></li>
-
-					</ul>
-				</nav>
-			</div>
-		</div>
+		<div id="header-container"></div>
 		<form class="search-bar" action="#" method="GET">
             <input type="text" name="search" placeholder="Buscar productos..." />
             <button type="submit">
                 <i class="fas fa-search"></i> <!-- Ícono de búsqueda -->
             </button>
         </form>
-		
 	</header>
 	<h1 class="titulo_pagina ">Catálogo</h1>
 
@@ -135,105 +147,6 @@
 		</div>
 	</div>
 
-	<div class="productos-preview">
-		<div class="preview" data-target="p-1">
-			<img src="teclado.jpg" alt="">
-			<h3>Teclado Gamer Marca Logitech</h3>
-			<div class="stars">
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star-half-alt"></i>
-				<span>(250)</span>
-			</div>
-			<p>Depende</p>
-			<div class="price">$150.000</div>
-			<div class="buttons">
-				<a href="#" class="buy">Comprar</a>
-				<span class="fa-solid fa-times close-preview"></span>
-			</div>
-		</div>
-
-		<div class="preview" data-target="p-2">
-			<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80g"
-				alt="">
-			<h3>Audífonos Marca Sony</h3>
-			<div class="stars">
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star-half-alt"></i>
-				<span>(250)</span>
-			</div>
-			<p>Quiza</p>
-			<div class="price">$500.000</div>
-			<div class="buttons">
-				<a href="#" class="buy">Comprar</a>
-				<span class="fa-solid fa-times close-preview"></span>
-			</div>
-		</div>
-
-		<div class="preview" data-target="p-3">
-			<img src="cargador-negro.jpg" alt="">
-			<h3>Cargador Marca Huawei</h3>
-			<div class="stars">
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star-half-alt"></i>
-				<span>(250)</span>
-			</div>
-			<p>Talvez</p>
-			<div class="price">$90.000</div>
-			<div class="buttons">
-				<a href="#" class="buy">Comprar</a>
-				<span class="fa-solid fa-times close-preview"></span>
-			</div>
-		</div>
-
-		<div class="preview" data-target="p-4">
-			<img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
-				alt="">
-			<h3>Cargador Marca Huawei</h3>
-			<div class="stars">
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star-half-alt"></i>
-				<span>(250)</span>
-			</div>
-			<p>Cargador tipo carga Rapida 30W</p>
-			<div class="price">$90.000</div>
-			<div class="buttons">
-				<a href="#" class="buy">Comprar</a>
-				<span class="fa-solid fa-times close-preview"></span>
-			</div>
-		</div>
-
-		<div class="preview" data-target="p-5">
-			<img src="mouse.jpg" alt="">
-			<h3>Mouse Marca Razer</h3>
-			<div class="stars">
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star-half-alt"></i>
-				<span>(250)</span>
-			</div>
-			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-			<div class="price">$90.000</div>
-			<div class="buttons">
-				<a href="#" class="buy">Comprar</a>
-				<span class="fa-solid fa-times close-preview"></span>
-			</div>
-		</div>
-	</div>
-
 	<footer class="piePagina">
 		<div class="soporte">
 			<nav>
@@ -261,6 +174,7 @@
 		</div>
 	</footer>
 	<script src="catalog.js"></script>
+	<script src="../index.js"></script>
 </body>
 
 </html>

@@ -32,6 +32,7 @@
                     <input type="text" placeholder="Correo Electronico" id="correo">
                     <input type="password" placeholder="Contraseña" id="contraseña" maxlength="10" placeholder="Máx. 10 caracteres">
                     <button class="btn__iniciar-sesion" type="submit">Entrar</button>
+                    <p><a href="#" id="recuperarContrasenaLink">¿Olvidaste tu contraseña?</a></p>
                 </form>
 
                 <!--Register-->
@@ -46,6 +47,13 @@
             </div>
         </div>
     </main>
+     <div id="modalRecuperar" style="display: none; position: fixed; top: 20%; left: 50%; transform: translate(-50%, -20%); background: white; padding: 20px; border: 1px solid #ccc; z-index: 1000;">
+        <h3>Recuperar contraseña</h3>
+        <p>Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.</p>
+        <input type="email" id="emailRecuperar" placeholder="Correo electrónico" />
+        <button id="enviarRecuperacion">Enviar</button>
+        <button onclick="document.getElementById('modalRecuperar').style.display='none'">Cancelar</button>
+    </div>
     <script src="./login.js"></script>
 </body>
 </html>
