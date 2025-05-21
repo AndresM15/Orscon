@@ -139,7 +139,8 @@ const onlogin = async (e) => {
 
         if (response.ok) {
             alert("Inicio de sesión exitoso");
-            localStorage.setItem("token", data.token); // Guardamos el token de sesión
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
             // Redirigir al dashboard o página principal
             window.location.href = "../index/index.html"; 
         } else {

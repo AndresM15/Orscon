@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
     userProfile.querySelector(".user-name").textContent = user.fullname;
 
     // Si el usuario es administrador, muestra el botón del panel admin
-    if (user.profile_id === 1) {
+    if (user.profile_id === "1") {
       document.getElementById("adminPanelOption").classList.remove("hidden");
     }
 
