@@ -1,162 +1,297 @@
-.producto-img{
-    display:flex;
-    position: relative; /* Permite mover la imagen desde su posición original */
-    top: 50px; /* Mueve la imagen hacia abajo */
-    left: 70px; /* Mueve la imagen hacia la derecha */
+/* Contenedor principal del producto */
+.product-page {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 650px;
+}
+
+/* Imagen principal */
+.producto-img {
+    position: absolute;
+    top: 50px;
+    left: 70px;
     width: 700px;
     height: 400px;
     object-fit: cover;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 
 .producto-img:hover {
-    transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
-    box-shadow: 0 9px 16px rgba(0, 0, 0, 0.4); /* Aumenta la sombra al pasar el mouse */
+    transform: scale(1.05);
+    box-shadow: 0 9px 16px rgba(0, 0, 0, 0.4);
 }
 
-.product-title{
-    position: relative;
-    display: flex;
-    top:-310px;
-    left: 835px;
-    font-size: 30px;
-    color: #c8ff00;
-    font-family: "Lucida Console", Monaco, monospace;
-}
-.description-product{
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    position: relative;
-    max-width: 40%;
-    left: 835px;
-    top:-300px;
-    font-size: 17px;  
-    flex-wrap: wrap;
-    
-    color: #ffffff;
-    font-family: "Lucida Console", Monaco, monospace;
-}
-
-.price{
-    position : relative;
-    font-size: 30px;
-    bottom: 120px;
-    left: 1040px;
-    color: #c8ff00;
-    
-    font-family: "Lucida Console", Monaco, monospace;
-}
-
-.componentes{
-    position: relative;
-    font-family: "Lucida Console", Monaco, monospace;
-    font-size: 17px;
-    color: #fff;
-    max-width: 40%;
-    left: 835px;
-    text-align:left;
-}
-
-.carrito{
-    position: relative;
-    padding: 15px 30px;
-    color: #080808;
-    font-family: "Lucida Console", Monaco, monospace;
-    background-color: #c8ff00;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    right: -1125px;
-    top: -175px;
-    font-size: 14px; /* Cambia el tamaño de la letra */
-    width: 200px; /* Fija el ancho del botón */
-    height: 50px; /* Fija la altura del botón */
-    transform: none;
-    white-space: nowrap;
-    
-    
-}
-
-
-.carrito:hover {
-    background-color: #090909; /* Cambia el color al pasar el mouse */
-    transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
-    color: #c8ff00;
-}
-
-.comprar{
-    position: relative;
-    padding: 15px 70px;
-    color: #0b0a0a;
-    font-family: "Lucida Console", Monaco, monospace;
-    background-color: #c8ff00;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    right:-705px;
-    top:-175px;
-    font-size: 14px; /* Cambia el tamaño de la letra */
-    width: 200px; /* Fija el ancho del botón */
-    height: 50px; /* Fija la altura del botón */
-    text-align: center; /* Centra el texto dentro del botón */
-    line-height: normal;
-    
-}
-
-.comprar:hover {
-    background-color: #090909; /* Cambia el color al pasar el mouse */
-    transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
-    color: #c8ff00; 
-}
-
-
-
-
-.text-box::before {
-    content: ''; /* Crea el pseudo-elemento */
+/* Cuadro de texto */
+.text-box {
     position: absolute;
-    top: 200px;
-    left: 810px;
-    width: 600px;
-    height: 650px;
-    background-color: #000; /* Fondo negro */
-    z-index: -1; /* Envía el fondo detrás del texto */
-    border-radius: 10px; /* Bordes redondeados (opcional) */
-    padding: 10px; /* Ajusta el tamaño del fondo */
-}
-
-.image-gallery {
-    text-align: center; /* Centra la galería */
-    
-}
-
-.main-image {
-    width: 100%;
-    max-width: 700px; /* Tamaño máximo de la imagen principal */
+    top: 50px;
+    right: 50px;
+    width: 500px;
+    padding: 20px;
+    background-color: #000;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    font-size: 30px;
+    color: #c8ff00;
+    font-family: "Lucida Console", Monaco, monospace;
     margin-bottom: 20px;
 }
 
-.thumbnails {
-    display: flex;
-    justify-content: center; /* Centra las miniaturas horizontalmente */
-    gap: 10px; /* Espaciado entre miniaturas */ /* Espaciado superior para separar de la imagen principal */
-    position: absolute; /* Asegura que las miniaturas estén posicionadas correctamente */
-    top: 650px; /* Ajusta la posición vertical de las miniaturas */
-    left: 170px; 
+.price {
+    font-size: 30px;
+    color: #c8ff00;
+    font-family: "Lucida Console", Monaco, monospace;
+    margin-bottom: 20px;
 }
+
+.description-product {
+    font-size: 17px;
+    color: #ffffff;
+    font-family: "Lucida Console", Monaco, monospace;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.componentes {
+    font-size: 17px;
+    color: #fff;
+    font-family: "Lucida Console", Monaco, monospace;
+    line-height: 1.5;
+    margin-bottom: 80px; /* Add space for buttons */
+}
+
+/* Contenedor para los botones */
+.buttons-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: calc(100% - 40px);
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Botones */
+.carrito, .comprar {
+    width: 200px;
+    height: 50px;
+    padding: 15px 30px;
+    font-family: "Lucida Console", Monaco, monospace;
+    background-color: #c8ff00;
+    color: #080808;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.carrito:hover, .comprar:hover {
+    background-color: #3f3c3c;
+    transform: scale(1.05);
+    color: #c8ff00;
+}
+
+/* Miniaturas */
+.thumbnails {
+    position: absolute;
+    top: 480px;
+    left: 400px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 700px;
+}
+
+
 .thumbnail {
-    width: 150px; /* Tamaño de las miniaturas */
-    height: auto;
-    cursor: pointer; /* Cambia el cursor al pasar sobre las miniaturas */
-    border: 2px solid transparent; /* Borde inicial */
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
     border-radius: 5px;
     transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .thumbnail:hover {
-    transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el mouse */
-    border-color: #c8ff00; /* Cambia el color del borde al pasar el mouse */
+    transform: scale(1.1);
+    border-color: #c8ff00;
+}
+
+/* Sistema de Calificación */
+.rating-section {
+    position: absolute;
+    top: 600px;
+    left: 70px;
+    width: 700px;
+    background-color: #000;
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    margin-bottom: 50px;  /* Reduced margin */
+}
+
+.rating-title, .rating-input-title {
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 18px;
+    color: #c8ff00;
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.stars-display, .stars-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.stars-outer {
+    position: relative;
+    display: inline-block;
+}
+
+.stars-outer::before {
+    content: "★★★★★";
+    color: #ccc;
+    font-size: 24px;
+}
+
+.stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0%;
+}
+
+.stars-inner::before {
+    content: "★★★★★";
+    color: #c8ff00;
+    font-size: 24px;
+}
+
+.rating-number {
+    font-size: 20px;
+    color: #fff;
+    margin-left: 10px;
+}
+
+.rating-input {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stars-input {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.stars-input input {
+    display: none;
+}
+
+.stars-input label {
+    cursor: pointer;
+    width: 25px;
+    font-size: 24px;
+    color: #ccc;
+    transition: color 0.2s ease;
+}
+
+.stars-input label:before {
+    content: '★';
+}
+
+.stars-input label:hover,
+.stars-input label:hover ~ label {
+    color: #c8ff00;
+}
+
+.stars-input input:checked ~ label {
+    color: #c8ff00;
+}
+
+/* Comentarios */
+.comment-section {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comment-title {
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 18px;
+    color: #c8ff00;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.comment-box {
+    width: 90%;
+    min-height: 100px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #1a1a1a;
+    border: 1px solid #c8ff00;
+    border-radius: 5px;
+    color: #fff;
+    font-family: "Lucida Console", Monaco, monospace;
+    resize: vertical;
+}
+
+.comment-box:focus {
+    outline: none;
+    border-color: #c8ff00;
+    box-shadow: 0 0 5px rgba(200, 255, 0, 0.5);
+}
+
+.submit-button {
+    width: 200px;
+    height: 40px;
+    margin-top: 10px;
+    background-color: #c8ff00;
+    color: #080808;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.submit-button:hover {
+    background-color: #3f3c3c;
+    color: #c8ff00;
+    transform: scale(1.05);
+}
+
+/* Footer */
+.piePagina {
+    position: relative;
+    width: 100%;
+    clear: both;
+    margin-top: 450px;  /* Reduced margin to bring footer closer */
 }
 
 

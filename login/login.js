@@ -68,16 +68,20 @@ anchoPage();
 const onSaveInfo = async (e) => {
     e.preventDefault()
     const fullname = document.getElementById("nombreR").value.trim();
+    const fullname = document.getElementById("nombreR").value.trim();
     const user = document.getElementById("usuarioR").value.trim();
     const email = document.getElementById("correoR").value.trim();
     const password = document.getElementById("contraseñaR").value.trim();
 
     if (!fullname || !email || !user  || !password) {
         alert("Todos los campos son obligatorios"); 
+    if (!fullname || !email || !user  || !password) {
+        alert("Todos los campos son obligatorios"); 
         return;
     }
 
     const body = {
+        fullname,
         fullname,
         user,
         email,

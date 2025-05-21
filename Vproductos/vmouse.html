@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="../style.css">
 	<link rel="stylesheet" href="vproductos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<<<<<<< HEAD
     <link rel="stylesheet" href="../carrito/carrito.css">
-=======
->>>>>>> 61544b49dc3923fcf97e151c2fde16fbc4f13c4a
 </head>
 <body>
     <section>
@@ -47,26 +44,68 @@
 
 
     <main class="product-page">
-        <img src="../catalog/mouse.jpg" alt="Mouse" class="producto-img">
+        <!-- Imagen principal -->
+        <img src="../catalog/mouse1.jpg" alt="Mouse Gaming" class="producto-img main-image">
+    
+        <!-- Cuadro de texto -->
         <div class="text-box">
-            <h1 class="product-title">Teclado Gamer Marca Logitech</h1>
-            <p class="price">$150.000</p>
+            <h1 class="product-title">Mouse Gaming Pro RGB</h1>
+            <p class="price">$129.900</p>
             <p class="description-product">
-                Este teclado gamer de la marca Logitech cuenta con iluminación RGB personalizable, teclas mecánicas de alta
-                precisión y un diseño ergonómico para largas sesiones de juego. Ideal para jugadores profesionales y
-                entusiastas.
+                Mouse gaming profesional con sensor óptico de alta precisión, iluminación RGB personalizable
+                y diseño ergonómico para máximo confort durante largas sesiones de juego.
             </p>
-        </div>    
-        <button class="carrito">Añadir al carrito</button>
-        <button class="comprar">Comprar</button>
+            <p class="componentes">
+                DPI ajustable hasta 16000, 8 botones programables, memoria integrada para perfiles,
+                peso ajustable y cable trenzado de alta durabilidad. Compatible con Windows y Mac.
+            </p>
+            <!-- Botones -->
+            <div class="buttons-container">
+                <button class="carrito">Añadir al carrito</button>
+                <a href="../portal_pagos/portal.html"><button class="comprar">Comprar</button></a>
+            </div>
+        </div>
+            
+        <!-- Miniaturas -->
+        <div class="thumbnails">
+            <img src="../catalog/mouse1.jpg" alt="Mouse Vista 1" class="thumbnail">
+            <img src="../catalog/mouse2.jpg" alt="Mouse Vista 2" class="thumbnail">
+            <img src="../catalog/mouse3.jpg" alt="Mouse Vista 3" class="thumbnail">
+        </div>
+
+        <!-- Sistema de Calificación -->
+        <div class="rating-section">
+            <div class="rating-display">
+                <span class="rating-title">Calificación del Producto</span>
+                <div class="stars-display">
+                    <div class="stars-outer">
+                        <div class="stars-inner"></div>
+                    </div>
+                    <span class="rating-number">0.0</span>
+                </div>
+            </div>
+            
+            <div class="rating-input">
+                <span class="rating-input-title">Califica este producto</span>
+                <div class="stars-input">
+                    <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
+                </div>
+            </div>
+            <div class="comment-section">
+                <span class="comment-title">Deja tu comentario</span>
+                <textarea class="comment-box" placeholder="Escribe tu comentario aquí..."></textarea>
+                <button class="submit-button">Enviar Reseña</button>
+            </div>
+        </div>
     </main>
 
-<<<<<<< HEAD
     
 
 
-=======
->>>>>>> 61544b49dc3923fcf97e151c2fde16fbc4f13c4a
     <footer class="piePagina">
 		<div class="soporte">
 			<nav>
@@ -93,11 +132,9 @@
 			</ul>
 		</div>
 	</footer>
-	<script src="vproductos.js"></script>
-<<<<<<< HEAD
+	<script src="../carrito/header.js"></script>
     <script src="../carrito/carrito.js"></script>
-=======
->>>>>>> 61544b49dc3923fcf97e151c2fde16fbc4f13c4a
+    <script src="vproductos.js"></script>
 </body>
 
 </html>
