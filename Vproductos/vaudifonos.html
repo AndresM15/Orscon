@@ -39,24 +39,56 @@
     </header>
 
     <main class="product-page">
-        <img src="../catalog/aud_nuevos1.jpg" alt="Audifonos" class="producto-img">
+        <img src="../catalog/aud_nuevos1.jpg" alt="Audífonos Gaming" class="producto-img main-image">
         <div class="text-box">
-            <h1 class="product-title">Audifonos Marca Sony</h1>
-            <p class="price">$500.000</p>
+            <h1 class="product-title">Audífonos Gaming Pro 7.1</h1>
+            <p class="price">$199.900</p>
             <p class="description-product">
-                Estos audifonos de la marca sony ofrecen una calidad de sony alta definición, cancelación de ruido activa y un diseño ergonómico para una experiencia auditiva excepcional. Son ideales para escuchar música, ver películas o jugar videojuegos, ademas que cuenta con material resistente que soporta caidas y sobre todo, con unas almohadillas comodas para un uso prolongado.
+                Audífonos gaming con sonido envolvente 7.1, micrófono con cancelación de ruido
+                y almohadillas memory foam para máxima comodidad durante largas sesiones de juego.
             </p>
             <p class="componentes">
-                Entre sus componentes cuenta con una bateria de larga duracion, 24 horas de uso continuo, cuenta con aplicacion para añadirle funciones a los botones, tiene un puerto auxiliar para su conexion alambrica y tambien cuenta con conexion alambrica, ademas de un puerto para memoria micro SD, para poder escuchar musica sin necesidad de un dispositivo movil.
+                Compatibles con PC, PS4, PS5 y Xbox. Control de volumen integrado,
+                iluminación RGB personalizable y cable trenzado de alta durabilidad.
             </p>
+            <div class="buttons-container">
+                <button class="carrito">Añadir al carrito</button>
+                <a href="../portal_pagos/portal.html"><button class="comprar">Comprar</button></a>
+            </div>
         </div>    
-        <button class="carrito">Añadir al carrito</button>
-        <button class="comprar">Comprar</button>
 
         <div class="thumbnails">
-            <img src="../catalog/aud_nuevos1.jpg" alt="Audífonos" class="thumbnail">
-            <img src="../catalog/aud_nuevos2.jpeg" alt="Audífonos 2" class="thumbnail">
-            <img src="../catalog/aud_nuevos3.jpg" alt="Audífonos 3" class="thumbnail">
+            <img src="../catalog/aud_nuevos1.jpg" alt="Audífonos Vista 1" class="thumbnail">
+            <img src="../catalog/aud_nuevos2.jpeg" alt="Audífonos Vista 2" class="thumbnail">
+            <img src="../catalog/aud_nuevos3.jpg" alt="Audífonos Vista 3" class="thumbnail">
+        </div>
+
+        <div class="rating-section">
+            <div class="rating-display">
+                <span class="rating-title">Calificación del Producto</span>
+                <div class="stars-display">
+                    <div class="stars-outer">
+                        <div class="stars-inner"></div>
+                    </div>
+                    <span class="rating-number">0.0</span>
+                </div>
+            </div>
+            
+            <div class="rating-input">
+                <span class="rating-input-title">Califica este producto</span>
+                <div class="stars-input">
+                    <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
+                </div>
+            </div>
+            <div class="comment-section">
+                <span class="comment-title">Deja tu comentario</span>
+                <textarea class="comment-box" placeholder="Escribe tu comentario aquí..."></textarea>
+                <button class="submit-button">Enviar Reseña</button>
+            </div>
         </div>
     </main>
 
@@ -86,6 +118,8 @@
             </ul>
         </div>
     </footer>
+    <script src="../carrito/header.js"></script>
+    <script src="../carrito/carrito.js"></script>
     <script src="vproductos.js"></script>
 </body>
 </html>

@@ -6,13 +6,11 @@
     <meta name="description" content="This is a metadescription of ing. software 1">
     <title>index</title>
     <link rel="stylesheet" href="../style.css">
-	<link rel="stylesheet" href="vproductos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../carrito/carrito.css">
+    <link rel="stylesheet" href="vproductos.css">
 </head>
 <body>
     <section>
-        <header  class="header">
+        <header class="header">
             <nav>
                 <h1>Orscon</h1>
             </nav>
@@ -22,12 +20,11 @@
     <header>
         <div class="back">
             <div class="menu container">
-
                 <a href="../index/index.html" class="logo">
                     <img src="../logo.png" alt="Orscon">
                 </a> 
                 <input type="checkbox" id="menu"/>
-                <label for="menu" >
+                <label for="menu">
                     <img src="../menu.png" class="menu-icono" alt="logo">
                 </label>
                 <nav class="navbar">
@@ -35,65 +32,94 @@
                         <li><a href="../catalog/catalog.html">Catalogo</a></li>
                         <li><a href="../review/review.html">Reviews</a></li>
                         <li><a href="../login/login.html">Iniciar sesion</a></li>
-                
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
 
-
     <main class="product-page">
-        <img src="../catalog/cargador1.jpeg" alt="Cardagor" class="producto-img">
+        <img src="../catalog/cargador1.jpeg" alt="Cargador Negro" class="producto-img main-image">
         <div class="text-box">
-            <h1 class="product-title">Cargador Universal</h1>
-            <p class="price">$50.000</p>
+            <h1 class="product-title">Cargador Rápido Pro 65W</h1>
+            <p class="price">$89.900</p>
             <p class="description-product">
-                Este cargador de 36w cuenta con un diseño compacto y ligero, ideal para llevarlo a cualquier lugar. Es compatible con la mayoría de los dispositivos móviles y tabletas, y cuenta con protección contra sobrecarga y cortocircuito.
+                Cargador de alta potencia con tecnología GaN, entrega hasta 65W de potencia
+                para cargar rápidamente laptops, tablets y smartphones. Diseño compacto y elegante.
             </p>
             <p class="componentes">
-                Este cargador cuenta con un puerto USB-C y un puerto USB-A, lo que permite cargar dos dispositivos al mismo tiempo. Además, su tecnología de carga rápida garantiza que tus dispositivos se carguen en el menor tiempo posible.
+                Compatible con USB-C PD y QC 4.0+, protección contra sobrecarga y cortocircuito,
+                indicador LED de estado y carcasa resistente al calor.
+            </p>
+            <div class="buttons-container">
+                <button class="carrito">Añadir al carrito</button>
+                <a href="../portal_pagos/portal.html"><button class="comprar">Comprar</button></a>
+            </div>
         </div>    
-        <button class="carrito">Añadir al carrito</button>
-        <button class="comprar">Comprar</button>
-
         <div class="thumbnails">
-            <img src="../catalog/cargador1.jpeg" alt="Cardagor" class="thumbnail">
-            <img src="../catalog/cargador2.jpg" alt="Cargador 1" class="thumbnail">
-            <img src="../catalog/cargador3.jpeg" alt="Cargador 2" class="thumbnail">
+            <img src="../catalog/cargador1.jpeg" alt="Cargador Vista 1" class="thumbnail">
+            <img src="../catalog/cargador2.jpg" alt="Cargador Vista 2" class="thumbnail">
+            <img src="../catalog/cargador3.jpeg" alt="Cargador Vista 3" class="thumbnail">
+        </div>
+        <div class="rating-section">
+            <div class="rating-display">
+                <span class="rating-title">Calificación del Producto</span>
+                <div class="stars-display">
+                    <div class="stars-outer">
+                        <div class="stars-inner"></div>
+                    </div>
+                    <span class="rating-number">0.0</span>
+                </div>
+            </div>
+            
+            <div class="rating-input">
+                <span class="rating-input-title">Califica este producto</span>
+                <div class="stars-input">
+                    <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
+                </div>
+            </div>
+            <div class="comment-section">
+                <span class="comment-title">Deja tu comentario</span>
+                <textarea class="comment-box" placeholder="Escribe tu comentario aquí..."></textarea>
+                <button class="submit-button">Enviar Reseña</button>
+            </div>
         </div>
     </main>
 
-    
-
     <footer class="piePagina">
-		<div class="soporte">
-			<nav>
-				<ul>
-					<li>24-HORAS SERVICIO AL CLIENTE</li>
-					<li>TELÉFONOS: +57 3207196190</li>
-					<li>Email: soporte@merkalu.com</li>
-				</ul>
-			</nav>
-		</div>
-		<div class="servicioCliente">
-			<ul>
-				<li><a href="#">Preguntas frecuentes</a></li>
-				<li><a href="#">Términos y condiciones</a></li>
-				<li><a href="#">Política de privacidad</a></li>
-			</ul>
-		</div>
-		<div class="siguenos">
-			<ul>
-				<li>Síguenos en:</li>
-				<li><a href="#">Facebook</a></li>
-				<li><a href="#">Twitter</a></li>
-				<li><a href="#">Instagram</a></li>
-			</ul>
-		</div>
-	</footer>
-	<script src="vproductos.js"></script>
-    <script src="../carrito/carrito.js"></script>
-</body>
+        <div class="soporte">
+            <nav>
+                <ul>
+                    <li>24-HORAS SERVICIO AL CLIENTE</li>
+                    <li>TELÉFONOS: +57 3207196190</li>
+                    <li>Email: soporte@merkalu.com</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="servicioCliente">
+            <ul>
+                <li><a href="#">Preguntas frecuentes</a></li>
+                <li><a href="#">Términos y condiciones</a></li>
+                <li><a href="#">Política de privacidad</a></li>
+            </ul>
+        </div>
+        <div class="siguenos">
+            <ul>
+                <li>Síguenos en:</li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </footer>
 
+    <!-- Scripts -->
+    <script src="../carrito/header.js"></script>
+    <script src="../carrito/carrito.js"></script>
+    <script src="vproductos.js"></script>
+</body>
 </html>

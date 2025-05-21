@@ -44,20 +44,63 @@
 
 
     <main class="product-page">
-        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt="Reloj Inteligente" class="producto-img">
+        <!-- Imagen principal -->
+        <img src="../catalog/reloj1.jpg" alt="Reloj Inteligente" class="producto-img main-image">
+    
+        <!-- Cuadro de texto -->
         <div class="text-box">
-            <h1 class="product-title">Teclado Gamer Marca Logitech</h1>
-            <p class="price">$150.000</p>
+            <h1 class="product-title">Reloj Inteligente SmartWatch Pro</h1>
+            <p class="price">$299.900</p>
             <p class="description-product">
-                Este teclado gamer de la marca Logitech cuenta con iluminación RGB personalizable, teclas mecánicas de alta
-                precisión y un diseño ergonómico para largas sesiones de juego. Ideal para jugadores profesionales y
-                entusiastas.
+                Reloj inteligente con pantalla táctil HD, monitor de frecuencia cardíaca, seguimiento de actividad física,
+                notificaciones inteligentes y resistencia al agua. Perfecto para deportistas y uso diario.
             </p>
-        </div>    
-        <button class="carrito">Añadir al carrito</button>
-        <button class="comprar">Comprar</button>
+            <p class="componentes">
+                Compatible con Android e iOS, batería de larga duración, múltiples modos deportivos,
+                monitor de sueño y oxígeno en sangre. Incluye correa ajustable y cargador magnético.
+            </p>
+            <!-- Botones -->
+            <div class="buttons-container">
+                <button class="carrito">Añadir al carrito</button>
+                <a href="../portal_pagos/portal.html"><button class="comprar">Comprar</button></a>
+            </div>
+        </div>
+            
+        <!-- Miniaturas -->
+        <div class="thumbnails">
+            <img src="../catalog/reloj1.jpg" alt="Reloj Vista 1" class="thumbnail">
+            <img src="../catalog/reloj2.jpg" alt="Reloj Vista 2" class="thumbnail">
+            <img src="../catalog/reloj3.jpg" alt="Reloj Vista 3" class="thumbnail">
+        </div>
 
-       
+        <!-- Sistema de Calificación -->
+        <div class="rating-section">
+            <div class="rating-display">
+                <span class="rating-title">Calificación del Producto</span>
+                <div class="stars-display">
+                    <div class="stars-outer">
+                        <div class="stars-inner"></div>
+                    </div>
+                    <span class="rating-number">0.0</span>
+                </div>
+            </div>
+            
+            <div class="rating-input">
+                <span class="rating-input-title">Califica este producto</span>
+                <div class="stars-input">
+                    <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
+                </div>
+            </div>
+            <div class="comment-section">
+                <span class="comment-title">Deja tu comentario</span>
+                <textarea class="comment-box" placeholder="Escribe tu comentario aquí..."></textarea>
+                <button class="submit-button">Enviar Reseña</button>
+            </div>
+        </div>
     </main>
 
     
@@ -88,8 +131,9 @@
 			</ul>
 		</div>
 	</footer>
-	<script src="vproductos.js"></script>
+	<script src="../carrito/header.js"></script>
     <script src="../carrito/carrito.js"></script>
+    <script src="vproductos.js"></script>
 </body>
 
 </html>

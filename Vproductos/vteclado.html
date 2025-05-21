@@ -61,18 +61,48 @@
                 teclas programables, 
                 ademas que cuenta con una aplicacion para su configuracion, cuenta con teclas de mebrana.
             </p>
+            <!-- Botones -->
+            <div class="buttons-container">
+                <button class="carrito">Añadir al carrito</button>
+                <a href="../portal_pagos/portal.html"><button class="comprar">Comprar</button></a>
+            </div>
         </div>
             
     
-        <!-- Botones -->
-        <button class="carrito">Añadir al carrito</button>
-        <button class="comprar">Comprar</button>
-
         <!-- Miniaturas -->
         <div class="thumbnails">
             <img src="../catalog/teclado_nuevo.jpg" alt="Teclado Gamer 1" class="thumbnail">
             <img src="../catalog/teclado_nuevo2.png" alt="Teclado Gamer 2" class="thumbnail">
             <img src="../catalog/teclado_nuevo3.jpg" alt="Teclado Gamer 3" class="thumbnail">
+        </div>
+
+        <!-- Sistema de Calificación -->
+        <div class="rating-section">
+            <div class="rating-display">
+                <span class="rating-title">Calificación del Producto</span>
+                <div class="stars-display">
+                    <div class="stars-outer">
+                        <div class="stars-inner"></div>
+                    </div>
+                    <span class="rating-number">0.0</span>
+                </div>
+            </div>
+            
+            <div class="rating-input">
+                <span class="rating-input-title">Califica este producto</span>
+                <div class="stars-input">
+                    <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
+                </div>
+            </div>
+            <div class="comment-section">
+                <span class="comment-title">Deja tu comentario</span>
+                <textarea class="comment-box" placeholder="Escribe tu comentario aquí..."></textarea>
+                <button class="submit-button">Enviar Reseña</button>
+            </div>
         </div>
     </main>
     <footer class="piePagina">
@@ -101,8 +131,10 @@
 			</ul>
 		</div>
 	</footer>
-	<script src="vproductos.js"></script>
-    
+	<script src="../carrito/header.js"></script>
+    <script src="../carrito/carrito.js"></script>
+    <script src="vproductos.js"></script>
+
     
     
 </body>
