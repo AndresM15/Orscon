@@ -4,8 +4,8 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    height: 100%;
     padding: 0 10px;
+    z-index: 0;
 }
 
 .cart-icon {
@@ -175,4 +175,28 @@
     transform: translateX(-50%);
     height: 100%;
     z-index: 10;
-} 
+}
+
+.btn-comprar {
+    display: block;
+    width: 160px;
+    margin: 24px auto 24px auto;
+    padding: 10px 0;
+    background: #c8ff00;
+    color: #222;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.btn-comprar:hover {
+    background: #a6cc00;
+    color: #000;
+    transform: scale(1.03);
+}

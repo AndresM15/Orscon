@@ -10,28 +10,38 @@
 </head>
 <body>
     <section>
-        <header class="header">
+        <header class="headerO">
             <nav>
                 <h1>Orscon</h1>
             </nav>
         </header>
     </section>
     
-    <header>
+    <header id="header">
         <div class="back">
             <div class="menu container">
                 <a href="../index/index.html" class="logo">
                     <img src="../logo.png" alt="Orscon">
-                </a> 
-                <input type="checkbox" id="menu"/>
-                <label for="menu">
-                    <img src="../menu.png" class="menu-icono" alt="logo">
-                </label>
+                </a>
                 <nav class="navbar">
                     <ul>
+                        <li id="adminPanelOption" class="hidden">
+                            <a href="../index/admin-panel.html">Panel de Administración</a>
+                        </li>
                         <li><a href="../catalog/catalog.html">Catálogo</a></li>
                         <li><a href="../review/review.html">Reviews</a></li>
-                        <li><a href="../login/login.html">Iniciar sesión</a></li>
+                        <li id="loginOption"><a href="../login/login.html">Iniciar sesión</a></li>
+                        <li id="userProfile" class="hidden">
+                            <a href="#" id="userName">
+                                <img src="../perfilimg.png" alt="Usuario" class="user-image" id="imgProfileHeader">
+                                <span class="user-name"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"></a></li>
+                                <li><a href="../profile/profile.html">Perfil</a></li>
+                                <li><a href="#" id="logout">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -41,11 +51,25 @@
     <main class="product-page">
         <img src="review_audifonos.jpg" alt="Audifonos" class="producto-img">
         <div class="text-box">
-            <h1 class="product-title">Audifonos Marca Sony</h1>
-            <p class="price">$500.000</p>
+            <h1 class="product-title">Sony WH-1000XM4: La Experiencia de Audio Definitiva</h1>
+            <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
             <p class="description-product">
-                Estos audifonos de la marca sony ofrecen una calidad de sony alta definición, cancelación de ruido activa y un diseño ergonómico para una experiencia auditiva excepcional. Son ideales para escuchar música, ver películas o jugar videojuegos, ademas que cuenta con material resistente que soporta caidas y sobre todo, con unas almohadillas comodas para un uso prolongado.
+                "¡Estos audífonos han superado todas mis expectativas! La cancelación de ruido es simplemente increíble - puedo estar en un café lleno de gente y escuchar mi música perfectamente. La calidad del sonido es cristalina, con unos bajos potentes pero no abrumadores.
+
+                Lo que más me ha sorprendido es la duración de la batería - me duran fácilmente 30 horas con una sola carga. Las almohadillas son súper cómodas, incluso después de usarlos por horas durante mis viajes.
+
+                El único punto a mejorar sería que a veces el control táctil es un poco sensible, pero es algo a lo que te acostumbras rápido. Por el precio, son una inversión que vale cada peso."
             </p>
+            <div class="review-author">
+                <p>- María González, Usuario Verificado</p>
+            </div>
+        </div>
     </main>
 
     <footer class="piePagina">
@@ -75,5 +99,55 @@
         </div>
     </footer>
     <script src="../review/review.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const token = localStorage.getItem("token");
+        const loginOption = document.getElementById("loginOption");
+        const userProfile = document.getElementById("userProfile");
+        const userNameAnchor = document.getElementById("userName");
+        const userNameSpan = document.querySelector(".user-name");
+        const logoutBtn = document.getElementById("logout");
+
+        if (!loginOption || !userProfile || !userNameAnchor || !userNameSpan || !logoutBtn) {
+            console.error("❌ ERROR: Elementos no encontrados en el DOM.");
+            return;
+        }
+
+        if (token) {
+            loginOption.classList.add("hidden");
+            userProfile.classList.remove("hidden");
+
+            fetch('http://localhost:3000/api/v1/user/profile', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                if (!response.ok) throw new Error("Token inválido o expirado");
+                return response.json();
+            })
+            .then(data => {
+                if (data.fullname) {
+                    userNameSpan.textContent = data.fullname;
+                }
+            })
+            .catch(error => {
+                localStorage.removeItem("token");
+                loginOption.classList.remove("hidden");
+                userProfile.classList.add("hidden");
+            });
+        } else {
+            loginOption.classList.remove("hidden");
+            userProfile.classList.add("hidden");
+        }
+
+        logoutBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            localStorage.removeItem("token");
+            window.location.reload();
+        });
+    });
+    </script>
 </body>
 </html>

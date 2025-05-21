@@ -3,61 +3,65 @@ body {
     background-size: cover;
 }
 .cart-list {
-    max-width: 600px;
+    width: 90%;
+    max-width: 1800px;
     margin: 40px auto;
     background: #181818cc;
     border-radius: 10px;
-    padding: 30px 20px;
+    padding: 30px 40px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.2);
 }
 .cart-list h2 {
     color: #c8ff00;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    font-size: 32px;
 }
 .cart-item {
     display: flex;
     align-items: center;
     border-bottom: 1px solid #333;
-    padding: 15px 0;
-    gap: 15px;
+    padding: 25px 0;
+    gap: 30px;
 }
 .cart-item:last-child {
     border-bottom: none;
 }
 .cart-item-image {
-    width: 70px;
-    height: 70px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 12px;
 }
 .cart-item-details {
     flex: 1;
 }
 .cart-item-name {
     color: #c8ff00;
-    font-size: 18px;
-    margin-bottom: 5px;
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 .cart-item-price {
     color: #fff;
-    font-size: 16px;
+    font-size: 20px;
 }
 .cart-item-quantity {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 8px;
+    gap: 15px;
+    margin-top: 12px;
+    color: white;
+    font-size: 18px;
 }
 .quantity-btn {
     background-color: #c8ff00;
     color: #000;
     border: none;
-    width: 28px;
-    height: 28px;
-    border-radius: 5px;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
 }
 .quantity-btn:hover {
@@ -67,16 +71,16 @@ body {
 .remove-item {
     color: #ff4444;
     cursor: pointer;
-    font-size: 22px;
-    margin-left: 15px;
+    font-size: 28px;
+    margin-left: 20px;
 }
 .remove-item:hover {
     color: #ff0000;
 }
 .cart-total {
-    margin-top: 30px;
+    margin-top: 40px;
     color: #fff;
-    font-size: 22px;
+    font-size: 28px;
     text-align: right;
 }
 .cart-total span {
@@ -87,4 +91,4 @@ body {
     text-align: center;
     padding: 40px 0;
     font-size: 20px;
-} 
+}

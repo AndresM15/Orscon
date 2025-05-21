@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,30 +11,38 @@
 </head>
 <body>
     <section>
-        <header  class="header">
+        <header  class="headerO">
             <nav>
                 <h1>Orscon</h1>
             </nav>
         </header>
     </section>
     
-    <header>
+    <header id="header">
         <div class="back">
             <div class="menu container">
-
                 <a href="../index/index.html" class="logo">
                     <img src="../logo.png" alt="Orscon">
                 </a> 
-                <input type="checkbox" id="menu"/>
-                <label for="menu" >
-                    <img src="../menu.png" class="menu-icono" alt="logo">
-                </label>
                 <nav class="navbar">
                     <ul>
-                        <li><a href="../catalog/catalog.html">Catalogo</a></li>
+                        <li id="adminPanelOption" class="hidden">
+                            <a href="../index/admin-panel.html">Panel de Administración</a>
+                        </li>
+                        <li><a href="../catalog/catalog.html">Catálogo</a></li>
                         <li><a href="../review/review.html">Reviews</a></li>
-                        <li><a href="../login/login.html">Iniciar sesion</a></li>
-                
+                        <li id="loginOption"><a href="../login/login.html">Iniciar sesión</a></li>
+                        <li id="userProfile" class="hidden">
+                            <a href="#" id="userName">
+                                <img src="../perfilimg.png" alt="Usuario" class="user-image">
+                                <span class="user-name"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"></a></li>
+                                <li><a href="../profile/profile.html">Perfil</a></li>
+                                <li><a href="#" id="logout">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -48,9 +56,10 @@
         <img src="../catalog/teclado_nuevo.jpg" alt="Teclado Gamer" class="producto-img main-image">
     
         <!-- Cuadro de texto -->
-        <div class="text-box">
+        <div class="text-box" >
             <h1 class="product-title">Teclado Gamer Marca Logitech</h1>
             <p class="price">$150.000</p>
+            <p class="stock">Stock: 15</p>
             <p class="description-product">
                 Este teclado gamer de la marca Logitech cuenta con iluminación RGB personalizable, teclas mecánicas de alta
                 precisión y un diseño ergonómico para largas sesiones de juego. Ideal para jugadores profesionales y
@@ -63,8 +72,7 @@
             </p>
             <!-- Botones -->
             <div class="buttons-container">
-                <button class="carrito">Añadir al carrito</button>
-                <a href="../portal_pagos/portal.html"><button class="comprar">Comprar</button></a>
+                <button class="carrito" data-id="2">Añadir al carrito</button>
             </div>
         </div>
             
@@ -134,6 +142,26 @@
 	<script src="../carrito/header.js"></script>
     <script src="../carrito/carrito.js"></script>
     <script src="vproductos.js"></script>
+    <script>
+    document.querySelectorAll('.carrito').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const productId = this.getAttribute('data-id');
+            const productContainer = this.closest('.text-box');
+            const mainImage = document.querySelector('.producto-img');
+            const priceText = productContainer.querySelector('.price').textContent;
+            const price = parseFloat(priceText.replace(/[^0-9.]/g, ''));
+            const product = {
+                id: productId,
+                name: productContainer.querySelector('.product-title').textContent,
+                price: price,
+                image: mainImage.src,
+                quantity: 1
+            };
+            addToCart(product);
+        });
+    });
+    </script>
 
     
     

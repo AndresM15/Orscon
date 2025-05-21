@@ -1,17 +1,7 @@
-const btnCart = document.querySelector('.container-icon');
-const containerCartProducts = document.querySelector('.container-cart-products');
-const cartTotal = document.querySelector('.total-pagar');
-const countProducts = document.querySelector('#contador-productos');
-const cartContainer = document.querySelector('.container-cart-products');
 const productsList = document.querySelector('.container-items');
-let allProducts = [];
 
-// Evento para abrir/cerrar el carrito
-if (btnCart) {
-    btnCart.addEventListener('click', () => {
-        containerCartProducts.classList.toggle('hidden-cart');
-    });
-}
+
+
 
 // Evento para gestionar clics en productos
 if (productsList) {
@@ -55,81 +45,11 @@ function redirectToProductPage(target) {
     }
 }
 
-// Función para añadir productos al carrito
-function addToCart(productElement) {
-    const productName = productElement.querySelector('h2').textContent;
-    const productPrice = parseFloat(productElement.querySelector('.price').textContent.replace(/[$,]/g, ''));
 
-    const existingProduct = allProducts.find(p => p.name === productName);
 
-    if (existingProduct) {
-        existingProduct.quantity++;
-    } else {
-        allProducts.push({
-            name: productName,
-            price: productPrice,
-            quantity: 1
-        });
-    }
 
-    updateCart();
-}
 
-// Función para actualizar el carrito
-function updateCart() {
-    cartContainer.innerHTML = '';
 
-    let total = 0;
-    let totalQuantity = 0;
-
-    if (allProducts.length === 0) {
-        cartContainer.innerHTML = '<p class="empty-cart">El carrito está vacío</p>';
-        cartTotal.textContent = '$0';
-        countProducts.textContent = 0;
-        return;
-    }
-
-    allProducts.forEach(product => {
-        const productElement = document.createElement('div');
-        productElement.classList.add('cart-product');
-        productElement.innerHTML = `
-            <div class="info-cart-product">
-                <span class="cantidad-producto-carrito">${product.quantity}</span>
-                <p class="titulo-producto-carrito">${product.name}</p>
-                <span class="precio-producto-carrito">$${(product.price * product.quantity).toFixed(2)}</span>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                stroke-width="1.5" stroke="currentColor" class="icon-close">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-        `;
-
-        productElement.querySelector('.icon-close').addEventListener('click', () => {
-            removeProduct(product.name);
-        });
-
-        cartContainer.appendChild(productElement);
-        total += product.price * product.quantity;
-        totalQuantity += product.quantity;
-    });
-
-    cartTotal.textContent = `$${total.toFixed(2)}`;
-    countProducts.textContent = totalQuantity;
-}
-
-// Función para remover productos del carrito
-function removeProduct(name) {
-    const productIndex = allProducts.findIndex(product => product.name === name);
-    if (productIndex !== -1) {
-        if (allProducts[productIndex].quantity > 1) {
-            allProducts[productIndex].quantity--;
-        } else {
-            allProducts.splice(productIndex, 1);
-        }
-    }
-    updateCart();
-}
 
 const searchInput = document.querySelector('.search-bar input');
 const items = document.querySelectorAll('.item');
@@ -143,6 +63,59 @@ searchInput.addEventListener('input', (e) => {
             item.style.display = 'block'; // Muestra el producto si coincide
         } else {
             item.style.display = 'none'; // Oculta el producto si no coincide
+        }
+    });
+});
+
+// Wishlist
+const wishHearts = document.querySelectorAll('.wish-heart');
+
+const productosCatalogo = [
+    { id: 'p-1', nombre: 'Teclado', imagen: '../catalog/teclado_nuevo.jpg', href: '../Vproductos/vteclado.html' },
+    { id: 'p-2', nombre: 'Audifonos', imagen: '../catalog/aud_nuevos1.jpg', href: '../Vproductos/vaudifonos.html' },
+    { id: 'p-3', nombre: 'Cargador', imagen: '../catalog/cargador1.jpeg', href: '../Vproductos/vcargador_negro.html' },
+    { id: 'p-4', nombre: 'Smartwatch', imagen: '../catalog/reloj1.jpg', href: '../Vproductos/vreloj.html' },
+    { id: 'p-5', nombre: 'Mouse', imagen: '../catalog/mouse1.jpg', href: '../Vproductos/vmouse.html' }
+];
+
+function getWishList() {
+    return JSON.parse(localStorage.getItem('wishList')) || [];
+}
+function saveWishList(list) {
+    localStorage.setItem('wishList', JSON.stringify(list));
+}
+
+// Al cargar la página, marca los corazones de productos en wishlist
+function marcarCorazonesWishlist() {
+    const wishList = getWishList();
+    wishHearts.forEach(heart => {
+        const id = heart.getAttribute('data-id');
+        if (wishList.some(p => p.id === id)) {
+            heart.classList.add('filled');
+        } else {
+            heart.classList.remove('filled');
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', marcarCorazonesWishlist);
+
+wishHearts.forEach(heart => {
+    heart.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const id = this.getAttribute('data-id');
+        let wishList = getWishList();
+        const producto = productosCatalogo.find(p => p.id === id);
+        if (!producto) return;
+        const yaEsta = wishList.some(p => p.id === id);
+        if (!yaEsta) {
+            wishList.push(producto);
+            this.classList.add('filled');
+            saveWishList(wishList);
+        } else {
+            wishList = wishList.filter(p => p.id !== id);
+            this.classList.remove('filled');
+            saveWishList(wishList);
         }
     });
 });

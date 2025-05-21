@@ -294,4 +294,63 @@
     margin-top: 450px;  /* Reduced margin to bring footer closer */
 }
 
+/* --- Header y menú de usuario (copiado de index.css) --- */
+.hidden {
+    display: none !important;
+}
+
+#userProfile {
+    position: relative;
+    display: inline-block;
+    align-items: end;
+}
+
+#userProfile a {
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 150px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+}
+
+.dropdown-menu li {
+    list-style: none;
+    padding: 10px;
+    text-align: left;
+}
+
+.dropdown-menu li a {
+    color: white;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+}
+
+.dropdown-menu li:hover {
+    background-color: #444;
+}
+
+#userProfile:hover .dropdown-menu {
+    display: block;
+}
+
+#userName img.user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+/* --- Fin header y menú usuario --- */
+
 

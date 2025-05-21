@@ -8,13 +8,14 @@
 	<link rel="stylesheet" href="../style.css">
 	<link rel="stylesheet" href="review.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="stylesheet" href="../carrito/carrito.css">
 
 
 </head>
 
 <body>
 	<section>
-		<header class="header">
+		<header class="headerO">
 			<nav>
 				<h1>Orscon</h1>
 			</nav>
@@ -41,67 +42,35 @@
 				</nav>
 			</div>
 		</div>
-		<form class="search-bar" action="#" method="GET">
-            <input type="text" name="search" placeholder="Buscar productos..." />
-            <button type="submit">
-                <i class="fas fa-search"></i> 
-            </button>
-        </form>
 		
 	</header>
-	<h1 class="titulo_pagina ">Review</h1>
+	<h1 class="titulo_pagina">Review</h1>
 
-	<div class="container-icon">
-		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-			class="icon-cart">
-			<path stroke-linecap="round" stroke-linejoin="round"
-				d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-		</svg>
-		<div class="count-products">
-			<span id="contador-productos">0</span>
-		</div>
-
-		<div class="container-cart-products hidden-cart">
-			<div class="cart-product">
-				<div class="info-cart-product">
-					<span class="cantidad-producto-carrito">1</span>
-					<p class="titulo-producto-carrito">Monitor</p>
-					<span class="precio-producto-carrito">$800.000</span>
-				</div>
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-					stroke="currentColor" class="icon-close">
-					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-				</svg>
-			</div>
-			<div class="cart-total">
-				<h3>Total:</h3>
-				<span class="total-pagar">$800.000</span>
-			</div>
-		</div>
-	</div>
-	</header>
 	<div class="container-items">
 		<div class="item" data-target="p-1">
 			<figure>
 				<img src="review_audifonos.jpg" alt="producto" />
 			</figure>
 			<div class="info-product">
-				<h2>Review Audifonos</h2>
-				<p class="nombre_p">Review de Pepe Hernandez</p>
+				<h2>Bose QuietComfort 45: Silencio y Confort en Cada Nota</h2>
+				<p class="nombre_p">Review de Mario González</p>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <i class="fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
                 </div>
-                
+                <p class="review-text">"Muy cómodos para uso prolongado. El sonido es claro y con buenos bajos. La conexión Bluetooth es estable y el alcance es bueno. Lo único que no me convence es que el control táctil a veces es demasiado sensible.
+
+                La cancelación de ruido es excelente, perfecta para viajes y oficinas ruidosas. Las almohadillas son súper suaves y no causan molestias incluso después de horas de uso.
+
+                Si buscas unos audífonos premium con gran cancelación de ruido y comodidad, estos son una excelente opción. El precio es alto, pero la calidad lo justifica."</p>
 			</div>
 		</div>
 		<div class="item" data-target="p-2">
 			<figure>
 				<img src="celular_review.jpg" alt="producto" />
-					
 			</figure>
 			<div class="info-product">
 				<h2>Review Celular</h2>
@@ -113,6 +82,7 @@
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                 </div>
+                <p class="review-text">"La mejor compra que he hecho este año. La cámara es espectacular, especialmente en modo nocturno. La batería me dura todo el día incluso con uso intensivo. La pantalla de 120Hz hace que todo se sienta súper fluido."</p>
 			</div>
 		</div>
 		<div class="item" data-target="p-3">
@@ -129,6 +99,7 @@
                     <i class="fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
                 </div>
+                <p class="review-text">"La tablet es buena para tareas básicas, pero me decepcionó un poco. La pantalla es bonita pero la batería se agota muy rápido. Si buscas algo para ver videos y navegar por internet, cumple su función, pero no esperes mucho más."</p>
 			</div>
 		</div>
 		<div class="item" data-target="p-4">
@@ -145,6 +116,7 @@
                     <i class="fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
                 </div>
+                <p class="review-text">"Un celular decente por su precio. La cámara es buena en condiciones de buena luz, pero en interiores deja que desear. El rendimiento es aceptable para uso diario, aunque a veces se traba con aplicaciones pesadas."</p>
 			</div>
 		</div>
 		<div class="item" data-target="p-5">
@@ -161,6 +133,11 @@
                     <i class="fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
                 </div>
+				<p class="review-text">"Muy cómodos para uso prolongado. El sonido es claro y con buenos bajos. La conexión Bluetooth es estable y el alcance es bueno. Lo único que no me convence es que el control táctil a veces es demasiado sensible.
+
+					La cancelación de ruido es excelente, perfecta para viajes y oficinas ruidosas. Las almohadillas son súper suaves y no causan molestias incluso después de horas de uso.
+	
+					Si buscas unos audífonos premium con gran cancelación de ruido y comodidad, estos son una excelente opción. El precio es alto, pero la calidad lo justifica."</p>
 			</div>
 		</div>
 	</div>
@@ -193,6 +170,9 @@
 		</div>
 	</footer>
 	<script src="review.js"></script>
+	<script src="../carrito/header.js"></script>
+    <script src="../carrito/carrito.js"></script>
+
 </body>
 
 </html>

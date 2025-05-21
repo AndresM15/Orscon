@@ -7,14 +7,11 @@
 	<title>catalog</title>
 	<link rel="stylesheet" href="../style.css">
 	<link rel="stylesheet" href="catalog.css">
-	<link rel="stylesheet" href="../index/index.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-	<link rel="stylesheet" href="index.css">
-
-
+	<link rel="stylesheet" href="../carrito/carrito.css">
 </head>
+
 <body>
-		<section><header class="headerO">
 	<section>
 		<header class="headerO">
 			<nav>
@@ -25,7 +22,6 @@
 	<header id="header">
         <div class="back">
             <div class="menu container">
-
                 <a href="../index/index.html" class="logo">
                     <img src="../logo.png" alt="Orscon">
                 </a> 
@@ -33,11 +29,7 @@
                     <ul>
                         <li><a href="../catalog/catalog.html">Catálogo</a></li>
                         <li><a href="../review/review.html">Reviews</a></li>
-                        
-                        <!-- Opción de Iniciar Sesión (se oculta al iniciar sesión) -->
                         <li id="loginOption"><a href="../login/login.html">Iniciar sesión</a></li>
-                    
-                        <!-- Menú desplegable del usuario (se muestra al iniciar sesión) -->
                         <li id="userProfile" class="hidden">
                             <a href="#" id="userName">
                                 <img src="../perfilimg.png" alt="Usuario" class="user-image">
@@ -62,88 +54,68 @@
             </button>
         </form>
 	</header>
-	<h1 class="titulo_pagina ">Catálogo</h1>
+	<h1 class="titulo_pagina">Catálogo</h1>
 
-	<div class="container-icon">
-		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-			class="icon-cart">
-			<path stroke-linecap="round" stroke-linejoin="round"
-				d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-		</svg>
-		<div class="count-products">
-			<span id="contador-productos">0</span>
-		</div>
 
-		<div class="container-cart-products hidden-cart">
-			<div class="cart-product">
-				<div class="info-cart-product">
-					<span class="cantidad-producto-carrito">1</span>
-					<p class="titulo-producto-carrito">Monitor</p>
-					<span class="precio-producto-carrito">$800.000</span>
-				</div>
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-					stroke="currentColor" class="icon-close">
-					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-				</svg>
-			</div>
-			<div class="cart-total">
-				<h3>Total:</h3>
-				<span class="total-pagar">$800.000</span>
-			</div>
-		</div>
-	</div>
-	</header>
 	<div class="container-items">
 		<div class="item" data-target="p-1">
+			<span class="wish-heart" data-id="p-1">
+				<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.8 4.6c-1.5-1.4-3.9-1.4-5.4 0l-.4.4-.4-.4c-1.5-1.4-3.9-1.4-5.4 0-1.6 1.5-1.6 4 0 5.5l5.8 5.7 5.8-5.7c1.6-1.5 1.6-4 0-5.5z"></path></svg>
+			</span>
 			<figure>
 				<img src="teclado_nuevo.jpg" alt="producto" />
 			</figure>
 			<div class="info-product">
 				<h2>Teclado</h2>
 				<p class="price">$150.000</p>
-				<button>Añadir al carrito</button>
 			</div>
 		</div>
 		<div class="item" data-target="p-2">
+			<span class="wish-heart" data-id="p-2">
+				<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.8 4.6c-1.5-1.4-3.9-1.4-5.4 0l-.4.4-.4-.4c-1.5-1.4-3.9-1.4-5.4 0-1.6 1.5-1.6 4 0 5.5l5.8 5.7 5.8-5.7c1.6-1.5 1.6-4 0-5.5z"></path></svg>
+			</span>
 			<figure>
 				<img src="aud_nuevos1.jpg" alt="producto" />
-					
 			</figure>
 			<div class="info-product">
 				<h2>Audifonos</h2>
 				<p class="price">$500.000</p>
-				<button>Añadir al carrito</button>
 			</div>
 		</div>
 		<div class="item" data-target="p-3">
+			<span class="wish-heart" data-id="p-3">
+				<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.8 4.6c-1.5-1.4-3.9-1.4-5.4 0l-.4.4-.4-.4c-1.5-1.4-3.9-1.4-5.4 0-1.6 1.5-1.6 4 0 5.5l5.8 5.7 5.8-5.7c1.6-1.5 1.6-4 0-5.5z"></path></svg>
+			</span>
 			<figure>
 				<img src="cargador1.jpeg" alt="producto" />
 			</figure>
 			<div class="info-product">
 				<h2>Cargador</h2>
 				<p class="price">$50.000</p>
-				<button>Añadir al carrito</button>
 			</div>
 		</div>
 		<div class="item" data-target="p-4">
+			<span class="wish-heart" data-id="p-4">
+				<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.8 4.6c-1.5-1.4-3.9-1.4-5.4 0l-.4.4-.4-.4c-1.5-1.4-3.9-1.4-5.4 0-1.6 1.5-1.6 4 0 5.5l5.8 5.7 5.8-5.7c1.6-1.5 1.6-4 0-5.5z"></path></svg>
+			</span>
 			<figure>
-				<img src="reloj1.jpg"
-					alt="producto" />
+				<img src="reloj1.jpg" alt="producto" />
 			</figure>
 			<div class="info-product">
 				<h2>Smartwatch</h2>
 				<p class="price">$90.000</p>
-				<button>Añadir al carrito</button>
 			</div>
 		</div>
 		<div class="item" data-target="p-5">
+			<span class="wish-heart" data-id="p-5">
+				<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.8 4.6c-1.5-1.4-3.9-1.4-5.4 0l-.4.4-.4-.4c-1.5-1.4-3.9-1.4-5.4 0-1.6 1.5-1.6 4 0 5.5l5.8 5.7 5.8-5.7c1.6-1.5 1.6-4 0-5.5z"></path></svg>
+			</span>
 			<figure>
 				<img src="mouse1.jpg" alt="producto" />
 			</figure>
 			<div class="info-product">
 				<h2>Mouse</h2>
 				<p class="price">$230.000</p>
-				<button>Añadir al carrito</button>
 			</div>
 		</div>
 	</div>
@@ -153,7 +125,7 @@
 			<nav>
 				<ul>
 					<li>24-HORAS SERVICIO AL CLIENTE</li>
-					<li>TELÉFONOS: +57 3207196190</li>
+					<li>TELÉFONOS: +57 3207196190</li>
 					<li>Email: soporte@merkalu.com</li>
 				</ul>
 			</nav>
@@ -161,13 +133,13 @@
 		<div class="servicioCliente">
 			<ul>
 				<li><a href="#">Preguntas frecuentes</a></li>
-				<li><a href="#">Términos y condiciones</a></li>
-				<li><a href="#">Política de privacidad</a></li>
+				<li><a href="#">Términos y condiciones</a></li>
+				<li><a href="#">Política de privacidad</a></li>
 			</ul>
 		</div>
 		<div class="siguenos">
 			<ul>
-				<li>Síguenos en:</li>
+				<li>Síguenos en:</li>
 				<li><a href="#">Facebook</a></li>
 				<li><a href="#">Twitter</a></li>
 				<li><a href="#">Instagram</a></li>
@@ -175,7 +147,8 @@
 		</div>
 	</footer>
 	<script src="catalog.js"></script>
-	<script src="../index.js"></script>
+	<script src="../carrito/header.js"></script>
+    <script src="../carrito/carrito.js"></script>
 </body>
 
 </html>

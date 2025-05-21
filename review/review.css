@@ -1,4 +1,3 @@
-
 *::after,
 *::before,
 *{
@@ -11,7 +10,7 @@
     position: relative;
     top: 50px;
     color: #000;
-    
+    margin-bottom: 80px;
 }
 
 body{
@@ -155,6 +154,7 @@ img{
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     padding:20px;
+    margin-top: 40px;
 }
 
 .item{
@@ -164,8 +164,8 @@ img{
     background-color: #fff;           /* 👈 Fondo blanco */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 👈 Sombra ligera */
     transition: transform 0.2s ease;
-    
-    
+    margin-bottom: 15px;
+    padding: 15px;
 }
 
 .item:hover{
@@ -174,10 +174,11 @@ img{
 
 .item img{
     width: 100%;
-    height: 300px;
+    height: 250px;
     object-fit: cover;
     border-radius: 10px 10px 0 0;
     transition: all .5s;
+    padding: 10px;
 }
 
 .item figure{
@@ -188,12 +189,12 @@ img{
     transform: scale(1.2);
 }
 
-.info-product{
-    padding: 15px 30px;
-    line-height: 2;
+.info-product {
+    padding: 15px;
+    line-height: 1.4;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .logo img{
@@ -201,10 +202,31 @@ img{
     height: 150px;  
 }
 
+.review-text {
+    color: #333;
+    font-size: 15px;
+    line-height: 1.4;
+    margin: 8px 0;
+    text-align: justify;
+}
 
-.nombre_p{
-    font-size: 18px;
-    font-weight: 900;
+.nombre_p {
+    color: #333;
+    font-style: italic;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.rating {
+    color: #c8ff00;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+h2 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 5px;
 }
 
 .info-product button{
@@ -262,10 +284,4 @@ img{
 
 .search-bar button:hover {
     background-color: #a6cc00; /* Color del botón al pasar el mouse */
-}
-
-.rating {
-    margin-top: 5px;
-    color: #c8ff00; /* Color dorado para estrellas */
-    font-size: 1.2em;
 }

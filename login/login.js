@@ -68,7 +68,6 @@ anchoPage();
 const onSaveInfo = async (e) => {
     e.preventDefault()
     const fullname = document.getElementById("nombreR").value.trim();
-    const fullname = document.getElementById("nombreR").value.trim();
     const user = document.getElementById("usuarioR").value.trim();
     const email = document.getElementById("correoR").value.trim();
     const password = document.getElementById("contraseñaR").value.trim();
@@ -109,7 +108,7 @@ const onSaveInfo = async (e) => {
         console.error("Error en la solicitud:", error);
         alert("Hubo un problema al registrar el usuario.");
     }
-};
+}};
 
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -10,28 +10,38 @@
 </head>
 <body>
     <section>
-        <header class="header">
+        <header class="headerO">
             <nav>
                 <h1>Orscon</h1>
             </nav>
         </header>
     </section>
     
-    <header>
+    <header id="header">
         <div class="back">
             <div class="menu container">
                 <a href="../index/index.html" class="logo">
                     <img src="../logo.png" alt="Orscon">
-                </a> 
-                <input type="checkbox" id="menu"/>
-                <label for="menu">
-                    <img src="../menu.png" class="menu-icono" alt="logo">
-                </label>
+                </a>
                 <nav class="navbar">
                     <ul>
+                        <li id="adminPanelOption" class="hidden">
+                            <a href="../index/admin-panel.html">Panel de Administración</a>
+                        </li>
                         <li><a href="../catalog/catalog.html">Catálogo</a></li>
                         <li><a href="../review/review.html">Reviews</a></li>
-                        <li><a href="../login/login.html">Iniciar sesión</a></li>
+                        <li id="loginOption"><a href="../login/login.html">Iniciar sesión</a></li>
+                        <li id="userProfile" class="hidden">
+                            <a href="#" id="userName">
+                                <img src="../perfilimg.png" alt="Usuario" class="user-image" id="imgProfileHeader">
+                                <span class="user-name"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"></a></li>
+                                <li><a href="../profile/profile.html">Perfil</a></li>
+                                <li><a href="#" id="logout">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -41,11 +51,12 @@
     <main class="product-page">
         <img src="celular_review.jpg" alt="Celular" class="producto-img">
         <div class="text-box">
-            <h1 class="product-title">Audifonos Marca Sony</h1>
-            <p class="price">$500.000</p>
+            <h1 class="product-title">iPhone 13 Pro: Potencia y Elegancia en tu Mano</h1>
+            <p class="price">$4.500.000</p>
             <p class="description-product">
-                Estos audifonos de la marca sony ofrecen una calidad de sony alta definición, cancelación de ruido activa y un diseño ergonómico para una experiencia auditiva excepcional. Son ideales para escuchar música, ver películas o jugar videojuegos, ademas que cuenta con material resistente que soporta caidas y sobre todo, con unas almohadillas comodas para un uso prolongado.
+                El iPhone 13 Pro combina un diseño sofisticado con un rendimiento sobresaliente. Su pantalla Super Retina XDR ofrece colores vibrantes y detalles impresionantes, mientras que el chip A15 Bionic garantiza fluidez en todas las tareas. La cámara triple captura fotos y videos de calidad profesional, incluso en condiciones de poca luz. Ideal para quienes buscan lo mejor en tecnología y estilo.
             </p>
+        </div>
     </main>
 
     <footer class="piePagina">
@@ -75,5 +86,55 @@
         </div>
     </footer>
     <script src="../review/review.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const token = localStorage.getItem("token");
+        const loginOption = document.getElementById("loginOption");
+        const userProfile = document.getElementById("userProfile");
+        const userNameAnchor = document.getElementById("userName");
+        const userNameSpan = document.querySelector(".user-name");
+        const logoutBtn = document.getElementById("logout");
+
+        if (!loginOption || !userProfile || !userNameAnchor || !userNameSpan || !logoutBtn) {
+            console.error("❌ ERROR: Elementos no encontrados en el DOM.");
+            return;
+        }
+
+        if (token) {
+            loginOption.classList.add("hidden");
+            userProfile.classList.remove("hidden");
+
+            fetch('http://localhost:3000/api/v1/user/profile', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                if (!response.ok) throw new Error("Token inválido o expirado");
+                return response.json();
+            })
+            .then(data => {
+                if (data.fullname) {
+                    userNameSpan.textContent = data.fullname;
+                }
+            })
+            .catch(error => {
+                localStorage.removeItem("token");
+                loginOption.classList.remove("hidden");
+                userProfile.classList.add("hidden");
+            });
+        } else {
+            loginOption.classList.remove("hidden");
+            userProfile.classList.add("hidden");
+        }
+
+        logoutBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            localStorage.removeItem("token");
+            window.location.reload();
+        });
+    });
+    </script>
 </body>
 </html>

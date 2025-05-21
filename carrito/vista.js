@@ -75,10 +75,17 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCart();
     document.getElementById('cartItems').addEventListener('click', handleCartActions);
     updateCartCountGlobal();
+    // Redirección al portal de pagos
+    const btnComprar = document.getElementById('btn-comprar');
+    if (btnComprar) {
+        btnComprar.addEventListener('click', function() {
+            window.location.href = '../portal_pagos/portal.html';
+        });
+    }
 });
 
 // Sincroniza el contador si se cambia el carrito en otra pestaña
 window.addEventListener('storage', () => {
     renderCart();
     updateCartCountGlobal();
-}); 
+});

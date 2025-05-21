@@ -1,3 +1,54 @@
+// --- Header de autenticación y usuario (copiado de index.js) ---
+document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("token");
+    const loginOption = document.getElementById("loginOption");
+    const userProfile = document.getElementById("userProfile");
+    const userNameAnchor = document.getElementById("userName");
+    const userNameSpan = document.querySelector(".user-name");
+    const logoutBtn = document.getElementById("logout");
+
+    if (!loginOption || !userProfile || !userNameAnchor || !userNameSpan || !logoutBtn) {
+        console.error("❌ ERROR: Elementos no encontrados en el DOM.");
+        return;
+    }
+
+    if (token) {
+        loginOption.classList.add("hidden");
+        userProfile.classList.remove("hidden");
+
+        fetch('http://localhost:3000/api/v1/user/profile', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            if (!response.ok) throw new Error("Token inválido o expirado");
+            return response.json();
+        })
+        .then(data => {
+            if (data.fullname) {
+                userNameSpan.textContent = data.fullname;
+            }
+        })
+        .catch(error => {
+            localStorage.removeItem("token");
+            loginOption.classList.remove("hidden");
+            userProfile.classList.add("hidden");
+        });
+    } else {
+        loginOption.classList.remove("hidden");
+        userProfile.classList.add("hidden");
+    }
+
+    logoutBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        localStorage.removeItem("token");
+        window.location.reload();
+    });
+});
+// --- Fin header autenticación ---
+
 // Selecciona la imagen principal y las miniaturas
 const mainImage = document.querySelector('.producto-img');
 const thumbnails = document.querySelectorAll('.thumbnail');
