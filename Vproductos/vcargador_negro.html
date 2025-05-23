@@ -136,6 +136,11 @@
         button.addEventListener('click', function(e) {
             e.preventDefault();
             const productId = this.getAttribute('data-id');
+            console.log('Producto seleccionado ID:', productId); // Debug log
+            
+            // Guardar el ID del producto en localStorage
+            localStorage.setItem('selectedProductId', productId);
+            
             const productContainer = this.closest('.text-box');
             const mainImage = document.querySelector('.producto-img');
             const priceText = productContainer.querySelector('.price').textContent;
@@ -147,7 +152,14 @@
                 image: mainImage.src,
                 quantity: 1
             };
+            
+            // Guardar la cantidad en localStorage
+            localStorage.setItem('quantity', '1');
+            
             addToCart(product);
+            
+            // Mostrar confirmación
+            alert('Producto añadido al carrito');
         });
     });
     </script>

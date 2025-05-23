@@ -78,10 +78,12 @@ function toggleCartDropdown() {
 
 function showCartDropdown() {
     const dropdown = document.querySelector('.cart-dropdown');
-    dropdown.classList.add('show');
-    setTimeout(() => {
-        dropdown.classList.remove('show');
-    }, 3000);
+    if (dropdown) {
+        dropdown.classList.add('show');
+        setTimeout(() => {
+            dropdown.classList.remove('show');
+        }, 3000);
+    }
 }
 
 document.addEventListener('click', (e) => {
@@ -143,5 +145,14 @@ function addToCart(product) {
     }
     saveCart();
     updateCartIcon();
+    
+    // Mostrar mensaje de confirmación
+    const confirmMessage = document.createElement('div');
+    confirmMessage.className = 'add-to-cart-message';
+    confirmMessage.textContent = '¡Producto añadido al carrito!';
+    document.body.appendChild(confirmMessage);
+    setTimeout(() => { confirmMessage.remove(); }, 2000);
+    
+    // Solo mostrar el dropdown si estamos en una página que lo tiene
     showCartDropdown();
 } 

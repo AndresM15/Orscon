@@ -1,5 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector(".payment-form");
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  // Logs de depuración
+  console.log('Estado del localStorage:');
+  console.log('selectedProductId:', localStorage.getItem('selectedProductId'));
+  console.log('quantity:', localStorage.getItem('quantity'));
+  console.log('token:', localStorage.getItem('token'));
+  console.log('userData:', localStorage.getItem('userData'));
 
   // Reglas para limpiar entradas numéricas
   document.getElementById("cvv").addEventListener("input", function () {
@@ -18,156 +26,170 @@ document.addEventListener("DOMContentLoaded", function () {
     this.value = this.value.replace(/[^0-9/]/g, "");
   });
 
-  form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const fields = {
-      fullname: [100, "Nombre completo"],
-      address: [150, "Dirección"],
-      city: [50, "Ciudad"],
-      zip: [10, "Código Postal"],
-      phone: [15, "Teléfono"],
-      cardholder: [100, "Nombre en la tarjeta"],
-      cardnumber: [19, "Número de tarjeta"],
-      expiry: [5, "Fecha de expiración"],
-      cvv: [4, "CVV"]
-    };
-
-    const numericFields = {
-      cardnumber: /^[\d\s]+$/,         // Dígitos y espacios
-      expiry: /^\d{2}\/\d{2}$/,        // MM/AA
-      cvv: /^\d{3,4}$/,                // 3 o 4 dígitos
-      phone: /^[\d+]+$/                // Dígitos y "+"
-    };
-
-    const direccionRegex = /^[a-zA-Z0-9\s,.\-#ºª]+$/;
-
-    let errors = [];
-    let valid = true;
-
-    for (let id in fields) {
-      const [maxLength, label] = fields[id];
-      const input = document.getElementById(id);
-      const value = input?.value.trim() || "";
-
-      if (value === "") {
-        errors.push(`${label} no puede estar vacío.`);
-        valid = false;
-        input.style.borderColor = "red";
-      } else if (value.length > maxLength) {
-        errors.push(`${label} supera el máximo de ${maxLength} caracteres.`);
-        valid = false;
-        input.style.borderColor = "red";
-      } else if (id === "address" && !direccionRegex.test(value)) {
-        errors.push(`${label} contiene caracteres inválidos. Usa solo letras, números, espacios, comas, puntos, guiones y símbolos comunes como #.`);
-        valid = false;
-        input.style.borderColor = "red";
-      } else if (numericFields[id] && !numericFields[id].test(value)) {
-        errors.push(`${label} tiene un formato inválido.`);
-        valid = false;
-        input.style.borderColor = "red";
-      } else {
-        input.style.borderColor = "#ccc";
-      }
+    // Validar que el usuario esté autenticado
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('No hay token de autenticación. Por favor, inicia sesión nuevamente.');
+      window.location.href = '../login/login.html';
+      return;
     }
 
-    if (!valid) {
-      alert("❌ Corrige los siguientes errores:\n\n" + errors.join("\n"));
-    } else {
-      alert("✅ ¡Formulario válido! Procesando pago...");
-      // Aquí podrías continuar con el procesamiento
+    // Obtener datos del usuario
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    if (!userData || !userData.email) {
+      alert('Error: No se encontró la información del usuario. Por favor, inicia sesión nuevamente.');
+      window.location.href = '../login/login.html';
+      return;
     }
-  });
-});
 
+    // Validar que exista un producto seleccionado
+    const productId = localStorage.getItem('selectedProductId');
+    if (!productId) {
+      alert('Error: No se encontró el producto seleccionado. Por favor, selecciona un producto nuevamente.');
+      window.location.href = '../catalog/catalog.html';
+      return;
+    }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('.payment-form');
-  
-  form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      // Obtener datos del formulario
-      const shippingInfo = {
-        address_line: document.getElementById('address').value,
-        city: document.getElementById('city').value,
-        state: "Estado", // Puedes obtenerlo de un input o dejarlo fijo si no tienes campo
-        country: "País", // Igual que arriba
-        postal_code: document.getElementById('zip').value
+    // Validar cantidad
+    const quantity = parseInt(localStorage.getItem('quantity')) || 1;
+    if (quantity <= 0) {
+      alert('La cantidad debe ser mayor a 0');
+      return;
+    }
+
+    // Validar formato de fecha de expiración
+    const expiryValue = document.getElementById('expiry').value.trim();
+    if (!/^\d{2}\/\d{2}$/.test(expiryValue)) {
+      alert('Por favor, ingresa una fecha de expiración válida en formato MM/YY');
+      return;
+    }
+
+    // Obtener información de envío
+    const shippingInfo = {
+      address_line: document.getElementById('address').value.trim(),
+      city: document.getElementById('city').value.trim(),
+      state: "Estado",
+      country: "País",
+      postal_code: document.getElementById('zip').value.trim()
     };
 
-      const paymentInfo = {
-          cardholder: document.getElementById('cardholder').value,
-          cardnumber: document.getElementById('cardnumber').value,
-          expiry: document.getElementById('expiry').value,
-          cvv: document.getElementById('cvv').value
-      };
+    // Obtener información de pago
+    const paymentInfo = {
+      cardholder: document.getElementById('cardholder').value.trim(),
+      cardnumber: document.getElementById('cardnumber').value.replace(/\s/g, ''),
+      expiry: expiryValue,
+      cvv: document.getElementById('cvv').value.trim()
+    };
 
-      // Obtener el ID del producto y usuario del localStorage o sessionStorage
-      const productId = localStorage.getItem('selectedProductId');
-      const userId = localStorage.getItem('userId');
-      const quantity = localStorage.getItem('quantity') || 1;
+    try {
+      // Mostrar indicador de carga
+      const originalButtonText = submitButton.textContent;
+      submitButton.textContent = 'Procesando...';
+      submitButton.disabled = true;
 
-      try {
-        const response = await fetch('http://localhost:3000/api/v1/orders', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${localStorage.getItem('token')}`
-          },
-          body: JSON.stringify({
-              items: [
-                  {
-                      product_id: productId,
-                      quantity: Number(quantity)
-                  }
-              ],
-              shipping_info: shippingInfo,
-              payment_info: paymentInfo
-          })
+      const response = await fetch('http://localhost:3000/api/v1/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          items: [
+            {
+              product_id: parseInt(productId),
+              quantity: quantity
+            }
+          ],
+          shipping_info: shippingInfo,
+          payment_info: paymentInfo
+        })
       });
 
-          const data = await response.json();
-
-          if (response.ok) {
-              alert('¡Compra realizada con éxito! Revisa tu correo para más detalles.');
-              // Limpiar el carrito
-              localStorage.removeItem('selectedProductId');
-              localStorage.removeItem('quantity');
-              // Redirigir a la página de confirmación
-              window.location.href = '../confirmation/confirmation.html';
-          } else {
-              alert(data.message || 'Error al procesar la compra');
-          }
-      } catch (error) {
-          console.error('Error:', error);
-          alert('Error al procesar la compra. Por favor, intenta de nuevo.');
+      if (!response.ok) {
+        const errorData = await response.text();
+        console.error('Error response:', errorData);
+        console.error('Status:', response.status);
+        
+        if (response.status === 403) {
+          alert('Tu sesión ha expirado. Por favor, inicia sesión nuevamente.');
+          window.location.href = '../login/login.html';
+          return;
+        }
+        
+        if (response.status === 404) {
+          alert('El producto seleccionado no está disponible. Por favor, selecciona otro producto.');
+          window.location.href = '../catalog/catalog.html';
+          return;
+        }
+        
+        throw new Error(`Error ${response.status}: ${errorData}`);
       }
+
+      const data = await response.json();
+
+      // Mostrar mensaje de éxito
+      const successMessage = document.createElement('div');
+      successMessage.className = 'success-message';
+      successMessage.innerHTML = `
+        <h3>¡Compra realizada con éxito!</h3>
+        <p>Se ha enviado un correo de confirmación a: ${userData.email}</p>
+        <p>Número de orden: ${data.orderId}</p>
+        <p>Total: $${data.total.toLocaleString()}</p>
+        <p>Detalles de la compra:</p>
+        <ul>
+          ${data.items.map(item => `<li>${item.name} (Cantidad: ${item.quantity})</li>`).join('')}
+        </ul>
+      `;
+      document.body.appendChild(successMessage);
+
+      // Limpiar el carrito
+      localStorage.removeItem('selectedProductId');
+      localStorage.removeItem('quantity');
+      localStorage.removeItem('cart');
+
+      // Limpiar el formulario
+      form.reset();
+
+      // Restaurar el botón
+      submitButton.textContent = originalButtonText;
+      submitButton.disabled = false;
+
+    } catch (error) {
+      console.error('Error:', error);
+      alert(error.message || 'Error al procesar la compra. Por favor, intenta de nuevo.');
+      
+      // Restaurar el botón en caso de error
+      submitButton.textContent = originalButtonText;
+      submitButton.disabled = false;
+    }
   });
 
   // Validación de tarjeta de crédito
   const cardNumber = document.getElementById('cardnumber');
   cardNumber.addEventListener('input', (e) => {
-      let value = e.target.value.replace(/\D/g, '');
-      if (value.length > 16) value = value.slice(0, 16);
-      e.target.value = value;
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 16) value = value.slice(0, 16);
+    e.target.value = value;
   });
 
   // Validación de fecha de expiración
   const expiry = document.getElementById('expiry');
   expiry.addEventListener('input', (e) => {
-      let value = e.target.value.replace(/\D/g, '');
-      if (value.length > 2) {
-          value = value.slice(0, 2) + '/' + value.slice(2, 4);
-      }
-      e.target.value = value;
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 2) {
+      value = value.slice(0, 2) + '/' + value.slice(2, 4);
+    }
+    e.target.value = value;
   });
 
   // Validación de CVV
   const cvv = document.getElementById('cvv');
   cvv.addEventListener('input', (e) => {
-      let value = e.target.value.replace(/\D/g, '');
-      if (value.length > 3) value = value.slice(0, 3);
-      e.target.value = value;
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 3) value = value.slice(0, 3);
+    e.target.value = value;
   });
 }); 

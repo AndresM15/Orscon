@@ -44,6 +44,29 @@
 		<div class="cart-total" id="cartTotal"></div>
 	</div>
     <button id="btn-comprar" class="btn-comprar">Comprar</button>
+
+    <script>
+        document.getElementById('btn-comprar').addEventListener('click', function() {
+            // Verificar si hay un producto seleccionado
+            const productId = localStorage.getItem('selectedProductId');
+            if (!productId) {
+                alert('No hay productos en el carrito');
+                return;
+            }
+
+            // Verificar si el usuario está autenticado
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('Por favor, inicia sesión para continuar con la compra');
+                window.location.href = '../login/login.html';
+                return;
+            }
+
+            // Redirigir al formulario de pago
+            window.location.href = '../portal_pagos/portal.html';
+        });
+    </script>
+
 	<footer class="piePagina">
 		<div class="soporte">
 			<nav>

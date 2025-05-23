@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const userNameAnchor = document.getElementById("userName");
     const userNameSpan = document.querySelector(".user-name");
     const logoutBtn = document.getElementById("logout");
+    const adminPanelOption = document.getElementById("adminPanelOption");
 
     if (!loginOption || !userProfile || !userNameAnchor || !userNameSpan || !logoutBtn) {
         console.error("❌ ERROR: Elementos no encontrados en el DOM.");
@@ -38,31 +39,42 @@ document.addEventListener("DOMContentLoaded", () => {
             return response.json();
         })
         .then(data => {
-            if (data.fullname) {
+            if (data) {
+                // Guardar datos del usuario en localStorage
+                localStorage.setItem('userData', JSON.stringify(data));
                 userNameSpan.textContent = data.fullname;
 
-                // Cambiar también texto del enlace en menú si lo deseas
-                const verPerfilLink = document.querySelector("#userProfile .dropdown-menu li a");
-                
+                // Mostrar panel de admin si el usuario es administrador
+                if (data.profile_id === 1) {
+                    adminPanelOption.classList.remove("hidden");
+                }
             }
         })
         .catch(error => {
             console.error("❌ Error al obtener perfil:", error);
+            // Limpiar datos de sesión
             localStorage.removeItem("token");
+            localStorage.removeItem("userData");
             loginOption.classList.remove("hidden");
             userProfile.classList.add("hidden");
+            adminPanelOption.classList.add("hidden");
+            // Redirigir al login si el token es inválido
+            window.location.href = "../login/login.html";
         });
     } else {
         console.log("🔓 No hay usuario autenticado.");
         loginOption.classList.remove("hidden");
         userProfile.classList.add("hidden");
+        adminPanelOption.classList.add("hidden");
     }
 
     logoutBtn.addEventListener("click", (e) => {
         e.preventDefault();
         console.log("🚪 Cerrando sesión...");
+        // Limpiar todos los datos de sesión
         localStorage.removeItem("token");
-        window.location.reload();
+        localStorage.removeItem("userData");
+        window.location.href = "../index/index.html";
     });
 });
 
@@ -101,26 +113,3 @@ window.addEventListener('DOMContentLoaded', () => {
     alert('Error al registrar el correo.');
   });
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-
-  if (user) {
-    // Oculta "Iniciar sesión" y muestra el menú de usuario
-    document.getElementById("loginOption").classList.add("hidden");
-    const userProfile = document.getElementById("userProfile");
-    userProfile.classList.remove("hidden");
-    userProfile.querySelector(".user-name").textContent = user.fullname;
-
-    // Si el usuario es administrador, muestra el botón del panel admin
-    if (user.profile_id === "1") {
-      document.getElementById("adminPanelOption").classList.remove("hidden");
-    }
-
-    // Logout
-    document.getElementById("logout").addEventListener("click", () => {
-      localStorage.clear();
-      window.location.href = "../index/index.html";
-    });
-  }
-});
